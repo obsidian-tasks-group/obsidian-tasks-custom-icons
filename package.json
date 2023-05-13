@@ -1,0 +1,15 @@
+{
+  "name": "tasks-emoji",
+  "version": "1.0.0",
+  "description": "Tasks Emojis provides a custom emoji font built from SVGs for use with the obsidian Tasks plugin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"The only test that matters is of meeting your potential\" && exit 1",
+    "build": "node ./index.js"
+  },
+  "author": "",
+  "license": "SEE LICENSE IN license.txt",
+  "devDependencies": {
+    "webfont": "^11.2.26"
+  }
+}
