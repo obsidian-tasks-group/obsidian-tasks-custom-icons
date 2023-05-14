@@ -21,11 +21,11 @@ Date and recurring icons modified from https://lucide.dev
 - From a terminal, run `npm install` from the cloned/forked/downloaded directory
 - Duplicate the `lucide` icon set folder, renaming it to your new icon set name, e.g. `fancyicons`
 - Replace/edit the duplicated SVG files in your new folder
-- Run `npm run build`, to generate `obsidian-tasks-<icon folder name>-icons.css` and `demo.html` files within each icon set folder within the repository
-    <small> _Dev Tip:_ Create a text file named `copysnippetpath.txt` within an icon set folder, containing an absolute path to another folder (e.g '`/Users/username/MyVault/.obsidian/snippets/`') to cause an extra copy of `obsidian-tasks-<icon folder name>-icons.css` to be written each time you run `npm run build`. Obsidian will reload this file whenever you update it if you enable the CSS snippet, allowing for in-situ preview of your custom icon set</small>
+- Run `npm run build`, to generate `obsidian-tasks-<icon folder name>-icons.css` and `demo.html` files within each icon set folder within the repository.
+    - _Dev Tip:_ In the same folder, create a text file named `copysnippetpath.txt` containing an absolute path to another folder – e.g '`/Users/username/MyVault/.obsidian/snippets/`'. This will cause an extra copy of `obsidian-tasks-<icon folder name>-icons.css` to be written each time you run `npm run build`. If you specify your Obsidian snippet folder and enable it within obsidian, Obsidian will reload the snippet whenever it changes.
 - Adjust SVG icons as desired
 
-If license permits, consider opening a PR with your icon set, reproducing appropriate licenses within `LICENSE.TXT`.
+Consider opening a PR with your icon set, reproducing appropriate licenses within `LICENSE.TXT`.
 
 ## Support development
 <a href="https://www.buymeacoffee.com/replete"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=replete&button_colour=BD5FFF&font_colour=ffffff&font_family=Poppins&outline_colour=000000&coffee_colour=FFDD00" /></a>
