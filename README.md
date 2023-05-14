@@ -1,25 +1,31 @@
 # Obsidian Tasks Custom Icons
 
-This simple application generates a custom font from monotone SVGs to replace the emojis used in Obsidian Tasks, also embedded within a CSS snippet.
+This repository contains a commandline tool (for developers/designers) to easily create CSS snippets that when added to Obsidian will replace the emojis used by the [Obsidian Tasks](https://github.com/obsidian-tasks-group/obsidian-tasks) with monotone icons matching the text colour.
 
-It generates three files:
+As a Tasks end-user, you can simply [install](https://help.obsidian.md/Extending+Obsidian/CSS+snippets) one of the CSS snippets in this repository to your obsidian vault to replace the [Tasks Emoji Format](https://publish.obsidian.md/tasks/Reference/Task+Formats/Tasks+Emoji+Format) emojis with monotone icons.
 
-- `obsidian-tasks-icons-snippets.css`
-drop/export to `<your-vault-path>/.obsidian/snippets` to replace emojis in your task lines in obsidian with new icons
-- `obsidian-tasks-icons-demo.html`
-an HTML file to quickly preview your icons during development
-- `obsidian-tasks-icons.woff2`
-the unembedded font itself in case you want to integrate with a plugin or theme
+## Lucide-based Icon set
 
-Date-related and recurring task icon from [lucide.dev](https://lucide.dev/license).
+![Lucide-based icon theme screenshot](lucide/screenshot.png)
+
+Date and recurring icons modified from https://lucide.dev.
+
+[Download CSS Snippet](https://raw.githubusercontent.com/replete/obsidian-tasks-custom-icons/main/lucide/obsidian-tasks-lucide-icons.css)
 
 
-[Tasks Emoji Format](https://publish.obsidian.md/tasks/Reference/Task+Formats/Tasks+Emoji+Format)
+## Creating a custom icon set
 
-## How to use
-- run `npm install` in the directory to install dependencies
-- make some pretty icons as SVGs
-- run `npm run build`
+**Prerequisites:** Node.JS must be installed. I cannot provide support if this is unfamiliar, but it is fairly straightforward:
+
+- Clone/fork/download this repository
+- From a terminal, run `npm install` from the cloned/forked/downloaded directory
+- Duplicate the `lucide` icon set folder, renaming it to your new icon set name, e.g. `fancyicons`
+- Replace/edit the duplicated SVG files in your new folder
+- Run `npm run build`, to generate `obsidian-tasks-<icon folder name>-icons.css` and `demo.html` files within each icon set folder within the repository
+    <small> _Dev Tip:_ Create a text file named `copysnippetpath.txt` within an icon set folder, containing an absolute path to another folder (e.g '`/Users/username/MyVault/.obsidian/snippets/`') to cause an extra copy of `obsidian-tasks-<icon folder name>-icons.css` to be written each time you run `npm run build`. Obsidian will reload this file whenever you update it if you enable the CSS snippet, allowing for in-situ preview of your custom icon set</small>
+- Adjust SVG icons as desired
+
+If license permits, consider opening a PR with your icon set, reproducing appropriate licenses within `LICENSE.TXT`.
 
 ## Support development
 <a href="https://www.buymeacoffee.com/replete"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=replete&button_colour=BD5FFF&font_colour=ffffff&font_family=Poppins&outline_colour=000000&coffee_colour=FFDD00" /></a>
