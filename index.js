@@ -13,7 +13,7 @@ const fs = require('fs');
 const FONTNAME = 'ObsidianTasksEmojis';
 const SYMBOLS = {
     created: ['➕', 'U+2795'],
-    scheduled: ['⌛️', 'U+23F3'],
+    scheduled: ['⏳', 'U+23F3'],
     start: ['🛫', 'U+1F6EB'],
     due: ['📅', 'U+1F4C5'],
     done: ['✅', 'U+2705'],

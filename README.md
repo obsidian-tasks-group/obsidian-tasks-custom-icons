@@ -21,7 +21,7 @@ Date and recurring icons modified from https://lucide.dev
 - From a terminal, run `npm install` from the cloned/forked/downloaded directory
 - Duplicate the `lucide` icon set folder, renaming it to your new icon set name, e.g. `fancyicons`
 - Replace/edit the duplicated SVG files in your new folder
-- Run `npm run build`, to generate `obsidian-tasks-<icon folder name>-icons.css` and `demo.html` files within each icon set folder within the repository.
+- Run `npm run build`, to generate `obsidian-tasks-<icon folder name>-icons.css` and `demo.html` files within each icon set folder
     - _Dev Tip:_ In the same folder, create a text file named `copysnippetpath.txt` containing an absolute path to another folder – e.g '`/Users/username/MyVault/.obsidian/snippets/`'. This will cause an extra copy of `obsidian-tasks-<icon folder name>-icons.css` to be written each time you run `npm run build`. If you specify your Obsidian snippet folder and enable it within obsidian, Obsidian will reload the snippet whenever it changes.
 - Adjust SVG icons as desired
 
