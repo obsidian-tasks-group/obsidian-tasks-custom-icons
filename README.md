@@ -11,7 +11,8 @@ an HTML file to quickly preview your icons during development
 - `obsidian-tasks-icons.woff2`
 the unembedded font itself in case you want to integrate with a plugin or theme
 
-I've very quickly made some icons to avoid licensing issues for the proof of concept. If I ever get a chance I will make some decent ones, but I'm actually hoping that somehow else can use this repository to come up with some good alternatives to the garish Emojis.
+Date-related and recurring task icon from [lucide.dev](https://lucide.dev/license).
+
 
 [Tasks Emoji Format](https://publish.obsidian.md/tasks/Reference/Task+Formats/Tasks+Emoji+Format)
 

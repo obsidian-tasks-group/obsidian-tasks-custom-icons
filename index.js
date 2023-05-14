@@ -5,7 +5,7 @@ const fs = require('fs');
     https://github.com/nfroidure/svgicons2svgfont
     https://util.unicode.org/UnicodeJsps/list-unicodeset.jsp?a=%5B%3AEmoji%3DYes%3A%5D&g=&i=
 
-    Obsidian Tasks Webfont Generator
+    Obsidian Tasks Custom Icons
     https://github.com/replete
 */
 
@@ -22,9 +22,6 @@ const SYMBOLS = {
     recurring: ['🔁', 'U+1F501']
 };
 
-const unicodeRange = Object.keys(SYMBOLS).map(i => SYMBOLS[i][1]).join(', ');
-const demoString = Object.keys(SYMBOLS).map(i => `${SYMBOLS[i][0]}${i}` ).join(' ');
-
 webfont({
     files: './icons/*.svg',
     fontName: FONTNAME,
@@ -40,7 +37,7 @@ webfont({
     const fontFaceCSSDefinition = `@font-face {
     font-family: '${FONTNAME}';
     src: url('data:@file/octet-stream;base64,${woff2.toString('base64')}') format('woff2');
-    unicode-range: ${unicodeRange};
+    unicode-range: ${Object.keys(SYMBOLS).map(i => SYMBOLS[i][1]).join(', ')};
 }`;
 
     fs.writeFileSync('./obsidian-tasks-icons-demo.html',`<!DOCTYPE html>
@@ -48,7 +45,7 @@ webfont({
     ${fontFaceCSSDefinition}
     body {font-family: '${FONTNAME}', sans-serif}
 </style>
-${demoString}`);
+${Object.keys(SYMBOLS).map(i => `${SYMBOLS[i][0]}${i}` ).join(' ')}`);
 
     fs.writeFileSync('./obsidian-tasks-icons-snippet.css',`${fontFaceCSSDefinition}
 
