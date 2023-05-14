@@ -12,6 +12,14 @@ As a Tasks end-user, you can simply [install](https://help.obsidian.md/Extending
 
 Date and recurring icons modified from https://lucide.dev
 
+## EmojiTwo-based Icon set
+
+![EmojiTwo-based icon theme screenshot](emojitwo/screenshot.png)
+
+[Download CSS Snippet](https://raw.githubusercontent.com/replete/obsidian-tasks-custom-icons/main/emojitwo/obsidian-tasks-emojitwo-icons.css)
+
+Date and recurring icons modified from https://github.com/EmojiTwo/emojitwo/tree/master/svg_bw
+
 
 ## Creating a custom icon set
 
@@ -28,4 +36,5 @@ Date and recurring icons modified from https://lucide.dev
 Consider opening a PR with your icon set, reproducing appropriate licenses within `LICENSE.TXT`.
 
 ## Support development
+
 <a href="https://www.buymeacoffee.com/replete"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=replete&button_colour=BD5FFF&font_colour=ffffff&font_family=Poppins&outline_colour=000000&coffee_colour=FFDD00" /></a>
