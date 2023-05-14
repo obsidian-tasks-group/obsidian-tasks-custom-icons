@@ -4,6 +4,14 @@ This repository contains a commandline tool (for developers/designers) to easily
 
 As a Tasks end-user, you can simply [install](https://help.obsidian.md/Extending+Obsidian/CSS+snippets) one of the generated CSS snippets below to your obsidian vault to replace the [Tasks Emoji Format](https://publish.obsidian.md/tasks/Reference/Task+Formats/Tasks+Emoji+Format) emojis with monotone icons.
 
+## Lucide-based Icon set 2
+
+![Lucide-based icon theme 2 screenshot](lucide2/screenshot.png)
+
+[Download CSS Snippet](https://raw.githubusercontent.com/replete/obsidian-tasks-custom-icons/main/lucide2/obsidian-tasks-lucide-icons.css)
+
+Icons modified from https://lucide.dev
+
 ## Lucide-based Icon set
 
 ![Lucide-based icon theme screenshot](lucide/screenshot.png)
