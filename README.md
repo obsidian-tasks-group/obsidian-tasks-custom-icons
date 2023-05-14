@@ -8,9 +8,9 @@ As a Tasks end-user, you can simply [install](https://help.obsidian.md/Extending
 
 ![Lucide-based icon theme screenshot](lucide/screenshot.png)
 
-Date and recurring icons modified from https://lucide.dev.
-
 [Download CSS Snippet](https://raw.githubusercontent.com/replete/obsidian-tasks-custom-icons/main/lucide/obsidian-tasks-lucide-icons.css)
+
+Date and recurring icons modified from https://lucide.dev
 
 
 ## Creating a custom icon set
