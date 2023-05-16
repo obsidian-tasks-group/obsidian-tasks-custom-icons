@@ -67,14 +67,14 @@ ${Object.keys(SYMBOLS).map(i => `${SYMBOLS[i][0]}${i}` ).join(' ')}`;
         // Write CSS snippet file to disk:
         fs.writeFileSync(`${__dirname}/${folderName}/obsidian-tasks-${folderName}-icons.css`, cssSnippetFileContents);
 
-        // Write copy of CSS snippet to another folder:
         const copySnippetPathFilePath = `${__dirname}/${folderName}/copysnippetpath.txt`;
         if (fs.existsSync(copySnippetPathFilePath)) {
-            // this icon folder contains a 'copysnippetpath.txt' file
+            // = this icon set folder contains a 'copysnippetpath.txt' file
             const copySnippetPath = fs.readFileSync(copySnippetPathFilePath).toString();
             if (fs.existsSync(copySnippetPath)) {
-                // 'copysnippetspath.txt' contains an absolute path to a directory that exists
+                // = 'copysnippetspath.txt' contains an absolute path to a directory that exists
                 const copySnippetFileFullPath = `${copySnippetPath}obsidian-tasks-${folderName}-icons.css`;
+                // Write copy of CSS snippet to disk:
                 fs.writeFileSync(copySnippetFileFullPath, cssSnippetFileContents);
                 console.log(`copysnippetpath.txt: Copied '${folderName}' CSS snippet to ${copySnippetFileFullPath}`)
             } else {
