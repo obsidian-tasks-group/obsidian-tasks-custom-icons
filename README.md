@@ -8,7 +8,7 @@ As a Tasks end-user, you can simply [install](https://help.obsidian.md/Extending
 
 ![Lucide-based icon theme 2 screenshot](lucide2/screenshot.png)
 
-[Download CSS Snippet](https://raw.githubusercontent.com/replete/obsidian-tasks-custom-icons/main/lucide2/obsidian-tasks-lucide-icons.css)
+[Download CSS Snippet](https://raw.githubusercontent.com/replete/obsidian-tasks-custom-icons/main/lucide2/obsidian-tasks-lucide2-icons.css)
 
 Icons modified from https://lucide.dev
 
