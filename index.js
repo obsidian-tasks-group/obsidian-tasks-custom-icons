@@ -1,5 +1,6 @@
+const path = require('node:path');
+const fs = require('node:fs');
 const webfont = require('webfont').webfont;
-const fs = require('fs');
 /*
     https://github.com/itgalaxy/webfont
     https://github.com/nfroidure/svgicons2svgfont
@@ -10,82 +11,78 @@ const fs = require('fs');
     https://github.com/replete
 */
 
-const FONTNAME = 'ObsidianTasksEmojis';
-const SYMBOLS = {
-    created: ['➕', 'U+2795'],
-    scheduled: ['⏳', 'U+23F3'],
-    start: ['🛫', 'U+1F6EB'],
-    due: ['📅', 'U+1F4C5'],
-    done: ['✅', 'U+2705'],
-    low: ['🔽', 'U+1F53D'],
-    medium: ['🔼', 'U+1F53C'],
-    high: ['⏫', 'U+23EB'],
-    recurring: ['🔁', 'U+1F501']
-};
+const getDirectories = (path) => fs.readdirSync(path).filter(file => fs.statSync(`${path}/${file}`).isDirectory());
+const iconFontFolders = getDirectories(__dirname).filter(dir => !dir.match(/\.git|node_modules/));
 
-const getDirectories = (path) => fs.readdirSync(path).filter(file => fs.statSync(path+'/'+file).isDirectory());
-const iconFolders = getDirectories(__dirname).filter(dir => !dir.match(/\.git|node_modules/));
-
-iconFolders.forEach(folderName => {
+iconFontFolders.forEach(iconFontFolderName => {
+    const [ iconFontName ] = path.parse(iconFontFolderName).name.split('-');
+    let iconSetGlyphs = [];
     webfont({
-        files: `${__dirname}/${folderName}/*.svg`,
-        fontName: FONTNAME,
+        files: `${__dirname}/${iconFontFolderName}/*.svg`,
+        fontName: iconFontName,
         formats: ['woff2'],
         ligatures: false,
         normalize: true,
-        verbose: true,
-        fontHeight:2000
+        verbose: false,
+        fontHeight:2000,
+        glyphTransformFn: (glyphData) => {
+            iconSetGlyphs.push({
+                ...glyphData,
+                filename: path.parse(glyphData.path).name + '.svg',
+                code: path.parse(glyphData.path).name.split('-')[0].substring(1)
+            });
+            return glyphData
+        }
     })
     .then((result) => {
         const woff2 = Buffer.from(result.woff2);
-        const licenseComment = !fs.existsSync(`${__dirname}/${folderName}/LICENSE.TXT`) ? '' : `/*
-${fs.readFileSync(`${__dirname}/${folderName}/LICENSE.TXT`).toString()}
+
+        const iconLicenseInformation = !fs.existsSync(`${__dirname}/${iconFontFolderName}/LICENSE.TXT`) ? '' : `/*
+${fs.readFileSync(`${__dirname}/${iconFontFolderName}/LICENSE.TXT`).toString()}
 */
 `;
-        const fontFaceCSSDefinition = `${licenseComment}@font-face {
-    font-family: '${FONTNAME}';
+        const fontFaceCSS = `${iconLicenseInformation}@font-face {
+    font-family: '${iconFontName}';
     src: url('data:@file/octet-stream;base64,${woff2.toString('base64')}') format('woff2');
-    unicode-range: ${Object.keys(SYMBOLS).map(i => SYMBOLS[i][1]).join(', ')};
+    unicode-range: ${iconSetGlyphs.map(g => `U+${g.code}`).join(', ')};
 }
 `;
-        const cssSnippetFileContents = `${fontFaceCSSDefinition}
+        const ImplementationCSS = `${fontFaceCSS}
 span.tasks-list-text,
 .cm-line:has(.task-list-label) .cm-list-1 {
-    font-family: '${FONTNAME}', var(--font-text);
+    font-family: '${iconFontName}', var(--font-text);
 }`;
-
-        const demoFileContents = `<!DOCTYPE html>
+        const demoHTML = `<!DOCTYPE html>
 <style>
-    ${fontFaceCSSDefinition}
-    body {font-family: '${FONTNAME}', sans-serif}
+    ${fontFaceCSS}
+    tr td:last-child {font-family: '${iconFontName}', sans-serif; text-align:center}
+    td {padding:0 4px;}
 </style>
-${Object.keys(SYMBOLS).map(i => `${SYMBOLS[i][0]}${i}` ).join(' ')}`;
+<table><tbody>
+${iconSetGlyphs.map(g => `<tr><td>${g.unicode[0]}</td><td>${g.filename}</td><td>U+${g.code}</td><td>${g.unicode[0]}</td></tr>`).join('')}</tbody></table>`;
 
         // Write demo file to disk:
-        fs.writeFileSync(`${__dirname}/${folderName}/demo.html`, demoFileContents);
+        fs.writeFileSync(`${__dirname}/${iconFontFolderName}/${iconFontFolderName}.html`, demoHTML);
 
         // Write CSS snippet file to disk:
-        fs.writeFileSync(`${__dirname}/${folderName}/obsidian-tasks-${folderName}-icons.css`, cssSnippetFileContents);
+        fs.writeFileSync(`${__dirname}/${iconFontFolderName}/${iconFontFolderName}.css`, ImplementationCSS);
 
-        const copySnippetPathFilePath = `${__dirname}/${folderName}/copysnippetpath.txt`;
-        if (fs.existsSync(copySnippetPathFilePath)) {
-            // = this icon set folder contains a 'copysnippetpath.txt' file
-            const copySnippetPath = fs.readFileSync(copySnippetPathFilePath).toString();
-            if (fs.existsSync(copySnippetPath)) {
-                // = 'copysnippetspath.txt' contains an absolute path to a directory that exists
-                const copySnippetFileFullPath = `${copySnippetPath}obsidian-tasks-${folderName}-icons.css`;
-                // Write copy of CSS snippet to disk:
-                fs.writeFileSync(copySnippetFileFullPath, cssSnippetFileContents);
-                console.log(`copysnippetpath.txt: Copied '${folderName}' CSS snippet to ${copySnippetFileFullPath}`)
+        const cspPath = `${__dirname}/${iconFontFolderName}/copysnippetpath.txt`;
+        if (fs.existsSync(cspPath)) {
+            const cspTargetPath = fs.readFileSync(cspPath).toString();
+            if (fs.existsSync(cspTargetPath)) {
+                const cspTargetSnippetFilepath = `${cspTargetPath}${iconFontFolderName}.css`;
+                fs.writeFileSync(cspTargetSnippetFilepath, ImplementationCSS);
+                console.log(`csp: Copied '${iconFontFolderName}.css' to ${cspTargetSnippetFilepath}`)
             } else {
-                console.log(`WARNING: copysnippetpath.txt: Path '${copySnippetPath}' within ${copySnippetPathFilePath} '${folderName}' does not exist, ignoring.`)
+                console.log(`csp: Target path '${cspTargetPath}' does not exist, ignoring.`)
             }
         }
         // Write binary font file to disk:
-        // fs.writeFileSync(`${__dirname}/${folderName}/obsidian-tasks-${folderName}-icons.woff2`, woff2, 'binary');
+        fs.writeFileSync(`${__dirname}/${iconFontFolderName}/${iconFontFolderName}.woff2`, woff2, 'binary');
+        console.log(`Created webfont '${iconFontFolderName}'`);
     })
     .catch((error) => {
         throw error
     });
 });
-
