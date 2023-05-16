@@ -40,8 +40,8 @@ Date and recurring icons modified from https://github.com/EmojiTwo/emojitwo/tree
 - Run `npm run build`, to generate `obsidian-tasks-<icon folder name>-icons.css` and `demo.html` files within each icon set folder
     - _Dev Tip:_ In the same folder, create a text file named `copysnippetpath.txt` containing an absolute path to another folder – e.g '`/Users/username/MyVault/.obsidian/snippets/`'. This will cause an extra copy of `obsidian-tasks-<icon folder name>-icons.css` to be written each time you run `npm run build`. If you specify your Obsidian snippet folder and enable it within obsidian, Obsidian will reload the snippet whenever it changes.
 - Adjust SVG icons as desired
-
-Consider opening a PR with your icon set, reproducing appropriate licenses within `LICENSE.TXT`.
+- Replace `LICENSE.TXT` as appropriate
+- Open a PR if license-able and share your icon set
 
 ## Support development
 
