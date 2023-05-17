@@ -52,6 +52,25 @@ Date and recurring icons modified from https://github.com/EmojiTwo/emojitwo/tree
 - Adjust SVG icons as desired
 - Replace `LICENSE.TXT` as appropriate, if you take icons from somewhere rather than creating your own artwork, the license should be honored and reproduced here
 
+## CSS Snippet details
+This tool generates CSS snippets usable by Obsidian for the purpose of replacing Task Emojis Format. It currently uses this rule for styling, which only applies the monochrome fonts to task lines in the normal editor, and task dataview. This works for Live Preview and Reading mode, though the rule could easily be adapted to also apply to source mode view.
+
+```css
+/*
+License...
+*/
+@font-face {
+    font-family: 'TasksMonoEmojis';
+    src: url('data:@file/octet-stream;base64,d09GMgABAAAAAAdkAAsAAAAAEOAAAAc...') format('woff2');
+    unicode-range: U+1F4C5, U+1F501, U+1F53C, U+1F53D, U+1F6EB, U+23EB, U+23F3, U+2705, U+2795;
+}
+
+span.tasks-list-text,
+.cm-line:has(.task-list-label) .cm-list-1 {
+    font-family: 'TasksMonoEmojis', var(--font-text);
+}
+```
+
 ## Support development
 
 <a href="https://www.buymeacoffee.com/replete"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=replete&button_colour=BD5FFF&font_colour=ffffff&font_family=Poppins&outline_colour=000000&coffee_colour=FFDD00" /></a>
