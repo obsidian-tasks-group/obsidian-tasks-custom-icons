@@ -49,7 +49,7 @@ ${fs.readFileSync(`${__dirname}/${iconFontFolderName}/LICENSE.TXT`).toString()}
 `;
         const ImplementationCSS = `${fontFaceCSS}
 span.tasks-list-text,
-.cm-line:has(.task-list-label) .cm-list-1 {
+.cm-line:has(.task-list-label) [class^=cm-list-] {
     font-family: '${iconFontName}', var(--font-text);
 }`;
         const demoHTML = `<!DOCTYPE html>
