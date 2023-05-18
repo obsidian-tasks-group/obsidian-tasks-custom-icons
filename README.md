@@ -66,7 +66,7 @@ License...
 }
 
 span.tasks-list-text,
-.cm-line:has(.task-list-label) .cm-list-1 {
+.cm-line:has(.task-list-label) [class^=cm-list-] {
     font-family: 'TasksMonoEmojis', var(--font-text);
 }
 ```
