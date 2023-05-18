@@ -2,7 +2,7 @@
 
 This repository contains a commandline tool (for developers/designers) to easily create CSS snippets that when added to Obsidian will replace the emojis used by the [Obsidian Tasks](https://github.com/obsidian-tasks-group/obsidian-tasks) with monotone icons matching the text colour.
 
-As a Tasks end-user, you can simply [install](https://help.obsidian.md/Extending+Obsidian/CSS+snippets) one of the generated CSS snippets below to your obsidian vault to replace the [Tasks Emoji Format](https://publish.obsidian.md/tasks/Reference/Task+Formats/Tasks+Emoji+Format) emojis with monochrome icons.
+As a Tasks end-user, you can simply [install](https://help.obsidian.md/Extending+Obsidian/CSS+snippets) one of the generated CSS snippets below to your obsidian vault to replace the [Tasks Emoji Format](https://publish.obsidian.md/tasks/Reference/Task+Formats/Tasks+Emoji+Format) emojis (in Live Preview or Reading modes) with monochrome icons.
 
 ## Lucide-based Icon set 2
 
@@ -56,13 +56,15 @@ Date and recurring icons modified from https://github.com/EmojiTwo/emojitwo/tree
 This tool generates CSS snippets usable by Obsidian for the purpose of replacing Task Emojis Format. It currently uses this rule for styling, which only applies the monochrome fonts to task lines in the normal editor, and task dataview. This works for Live Preview and Reading mode, though the rule could easily be adapted to also apply to source mode view.
 
 ```css
-/*
-License...
+/*! 
+License info...
 */
 @font-face {
     font-family: 'TasksMonoEmojis';
-    src: url('data:@file/octet-stream;base64,d09GMgABAAAAAAdkAAsAAAAAEOAAAAc...') format('woff2');
+    src: url('data:@file/octet-stream;base64,d09GMgABAAAAAAdkAAsAAAAANOTREALDONTUSETHIS...') format('woff2');
     unicode-range: U+1F4C5, U+1F501, U+1F53C, U+1F53D, U+1F6EB, U+23EB, U+23F3, U+2705, U+2795;
+    /* 📅, 🔁, 🔼, 🔽, 🛫, ⏫, ⏳, ✅, ➕ */
+    /*! Generator: obsidian-tasks-custom-icons vX.X.X https://github.com/replete/obsidian-tasks-custom-icons */
 }
 
 span.tasks-list-text,
