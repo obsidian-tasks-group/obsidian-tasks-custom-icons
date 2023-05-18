@@ -18,7 +18,7 @@ Icons modified from https://lucide.dev
 
 [Download CSS Snippet](https://raw.githubusercontent.com/replete/obsidian-tasks-custom-icons/main/lucide2/obsidian-tasks-lucide2-icons.css)
 
-Icons extracted from Google's [Noto Emoji](https://github.com/googlefonts/noto-emoji/blob/main/fonts/NotoColorEmoji.ttf) variable TTF font. Unsurprisingly, putting their contours through this workflow does not yield a great result.
+Icons extracted from Google's [Noto Emoji](https://github.com/googlefonts/noto-emoji/blob/main/fonts/NotoColorEmoji.ttf) variable TTF font
 
 ## Lucide-based Icon set
 
