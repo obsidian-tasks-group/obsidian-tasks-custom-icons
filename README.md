@@ -1,6 +1,6 @@
 # Obsidian Tasks Custom Icons
 
-This repository contains a commandline tool (for developers/designers) to easily create CSS snippets that when added to Obsidian will replace the emojis used by the [Obsidian Tasks](https://github.com/obsidian-tasks-group/obsidian-tasks) with monotone icons matching the text colour.
+This repository contains a commandline tool (for developers/designers) to easily create CSS snippets that when added to Obsidian will replace the emojis used by the [Obsidian Tasks](https://github.com/obsidian-tasks-group/obsidian-tasks) with monochrome icons matching the text colour.
 
 As a Tasks end-user, you can simply [install](https://help.obsidian.md/Extending+Obsidian/CSS+snippets) one of the generated CSS snippets below to your obsidian vault to replace the [Tasks Emoji Format](https://publish.obsidian.md/tasks/Reference/Task+Formats/Tasks+Emoji+Format) emojis (in Live Preview or Reading modes) with monochrome icons.
 
@@ -53,7 +53,7 @@ Date and recurring icons modified from https://github.com/EmojiTwo/emojitwo/tree
 - Replace `LICENSE.TXT` as appropriate, if you take icons from somewhere rather than creating your own artwork, the license should be honored and reproduced here
 
 ## CSS Snippet details
-This tool generates CSS snippets usable by Obsidian for the purpose of replacing Task Emojis Format. It currently uses this rule for styling, which only applies the monochrome fonts to task lines in the normal editor, and task dataview. This works for Live Preview and Reading mode, though the rule could easily be adapted to also apply to source mode view.
+This tool generates CSS snippets usable by Obsidian for the purpose of replacing the Task Emojis Format emojis for task lines in obsidian notes. It currently uses the following rule for styling, which only applies the monochrome fonts to task lines in the normal editor, and task dataview. This works for Live Preview and Reading mode, though the rule could easily be adapted to also apply to source mode view.
 
 ```css
 /*! 

@@ -51,7 +51,7 @@ ${fs.existsSync(`${folderPath}/LICENSE.TXT`) ?
     /*! Generator: ${name} v${version} ${url} */
 }
 `;
-        const ImplementationCSS = `${fontFaceCSS}
+        const implementationCSS = `${fontFaceCSS}
 span.tasks-list-text,
 .cm-line:has(.task-list-label) [class^=cm-list-] {
     font-family: '${fontName}', var(--font-text);
@@ -69,20 +69,20 @@ ${glyphs.map(g => `<tr><td>${g.unicode[0]}</td><td>${g.filename}</td><td>U+${g.c
         fs.writeFileSync(`${folderPath}/${folderName}.html`, demoHTML);
 
         // Write CSS snippet file to disk:
-        fs.writeFileSync(`${folderPath}/${folderName}.css`, ImplementationCSS);
+        fs.writeFileSync(`${folderPath}/${folderName}.css`, implementationCSS);
 
         const cspPath = `${folderPath}/copysnippetpath.txt`;
         if (fs.existsSync(cspPath)) {
             const cspTargetPath = fs.readFileSync(cspPath).toString();
             if (fs.existsSync(cspTargetPath)) {
                 const cspTargetSnippetFilepath = `${cspTargetPath}${folderName}.css`;
-                fs.writeFileSync(cspTargetSnippetFilepath, ImplementationCSS);
+                fs.writeFileSync(cspTargetSnippetFilepath, implementationCSS);
                 console.log(`csp: Copied '${folderName}.css' to ${cspTargetSnippetFilepath}`)
             } else {
                 console.log(`csp: Target path '${cspTargetPath}' does not exist, ignoring.`)
             }
         }
-        // Write binary font file to disk:
+        // Write binary font file to disk (unused by generated HTML CSS snipets, purely for theme develoeprs):
         fs.writeFileSync(`${folderPath}/${folderName}.woff2`, woff2, 'binary');
         console.log(`Created '${folderName}' webfont`);
     })
