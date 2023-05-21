@@ -8,7 +8,7 @@ As a Tasks end-user, you can simply [install](https://help.obsidian.md/Extending
 
 ![Lucide-based icon theme 2 screenshot](TasksMonoEmojis-lucide2/screenshot.png)
 
-[Download CSS Snippet](https://raw.githubusercontent.com/replete/obsidian-tasks-custom-icons/main/lucide2/obsidian-tasks-lucide2-icons.css)
+[Download CSS Snippet](https://github.com/replete/obsidian-tasks-custom-icons/blob/main/TasksMonoEmojis-lucide2/TasksMonoEmojis-lucide2.css)
 
 Icons modified from https://lucide.dev
 
@@ -16,7 +16,7 @@ Icons modified from https://lucide.dev
 
 ![NotoEmoji-based icon them2 screenshot](TasksMonoEmojis-notoemoji/screenshot.png)
 
-[Download CSS Snippet](https://raw.githubusercontent.com/replete/obsidian-tasks-custom-icons/main/lucide2/obsidian-tasks-lucide2-icons.css)
+[Download CSS Snippet](https://github.com/replete/obsidian-tasks-custom-icons/blob/main/TasksMonoEmojis-notoemoji/TasksMonoEmojis-notoemoji.css)
 
 Icons extracted from Google's [Noto Emoji](https://github.com/googlefonts/noto-emoji/blob/main/fonts/NotoColorEmoji.ttf) variable TTF font
 
@@ -24,7 +24,7 @@ Icons extracted from Google's [Noto Emoji](https://github.com/googlefonts/noto-e
 
 ![Lucide-based icon theme screenshot](TasksMonoEmojis-lucide2/screenshot.png)
 
-[Download CSS Snippet](https://raw.githubusercontent.com/replete/obsidian-tasks-custom-icons/main/lucide/obsidian-tasks-lucide-icons.css)
+[Download CSS Snippet](https://github.com/replete/obsidian-tasks-custom-icons/blob/main/TasksMonoEmojis-lucide/TasksMonoEmojis-lucide.css)
 
 Date and recurring icons modified from https://lucide.dev
 
@@ -32,7 +32,7 @@ Date and recurring icons modified from https://lucide.dev
 
 ![EmojiTwo-based icon theme screenshot](TasksMonoEmojis-emojitwo/screenshot.png)
 
-[Download CSS Snippet](https://raw.githubusercontent.com/replete/obsidian-tasks-custom-icons/main/emojitwo/obsidian-tasks-emojitwo-icons.css)
+[Download CSS Snippet](https://github.com/replete/obsidian-tasks-custom-icons/blob/main/TasksMonoEmojis-emojitwo/TasksMonoEmojis-emojitwo.css)
 
 Date and recurring icons modified from https://github.com/EmojiTwo/emojitwo/tree/master/svg_bw
 
