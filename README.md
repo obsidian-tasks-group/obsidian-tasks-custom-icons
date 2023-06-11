@@ -61,10 +61,10 @@ License info...
 */
 @font-face {
     font-family: 'TasksMonoEmojis';
-    src: url('data:@file/octet-stream;base64,d09GMgABAAAAAAdkAAsAAAAANOTREALDONTUSETHIS...') format('woff2');
-    unicode-range: U+1F4C5, U+1F501, U+1F53C, U+1F53D, U+1F6EB, U+23EB, U+23F3, U+2705, U+2795;
-    /* 📅, 🔁, 🔼, 🔽, 🛫, ⏫, ⏳, ✅, ➕ */
-    /*! Generator: obsidian-tasks-custom-icons vX.X.X https://github.com/replete/obsidian-tasks-custom-icons */
+    src: url('data:@file/octet-stream;base64,d09GMgABAAAAAAdkAAsAAAAA_NOTREALDONTUSETHIS...') format('woff2');
+    unicode-range: U+1F4C5, U+1F501, U+1F53A, U+1F53C, U+1F53D, U+1F6EB, U+23EB, U+23EC, U+23F3, U+2705, U+2795;
+    /* 📅, 🔁, 🔺, 🔼, 🔽, 🛫, ⏫, ⏬, ⏳, ✅, ➕ */
+    /*! Generator: obsidian-tasks-custom-icons v1.0.3 https://github.com/replete/obsidian-tasks-custom-icons */
 }
 
 span.tasks-list-text,
