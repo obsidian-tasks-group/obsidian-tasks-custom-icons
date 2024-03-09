@@ -46,7 +46,7 @@ ${fs.existsSync(`${folderPath}/LICENSE.TXT`) ?
 @font-face {
     font-family: '${fontName}';
     src: url('data:@file/octet-stream;base64,${woff2.toString('base64')}') format('woff2');
-    unicode-range: ${glyphs.map(g => `u${g.code}`).join(', ')};
+    unicode-range: ${glyphs.map(g => `U+${g.code}`).join(', ')};
     /* ${glyphs.map(g => `${g.unicode[0]}`).join(', ')} */
     /*! Generator: ${name} v${version} ${url} */
 }
@@ -57,9 +57,6 @@ span.tasks-list-text,
     font-family: '${fontName}', var(--font-text);
 }`;
         const demoHTML = `<!DOCTYPE html>
-<head>
-    <meta charset="utf-8">
-</head>
 <style>
 ${fontFaceCSS}
 tr td:last-child {font-family: '${fontName}', sans-serif; text-align:center}
