@@ -46,7 +46,7 @@ ${fs.existsSync(`${folderPath}/LICENSE.TXT`) ?
 @font-face {
     font-family: '${fontName}';
     src: url('data:@file/octet-stream;base64,${woff2.toString('base64')}') format('woff2');
-    unicode-range: ${glyphs.map(g => `U+${g.code}`).join(', ')};
+    unicode-range: ${glyphs.map(g => `u${g.code}`).join(', ')};
     /* ${glyphs.map(g => `${g.unicode[0]}`).join(', ')} */
     /*! Generator: ${name} v${version} ${url} */
 }
@@ -58,9 +58,6 @@ span.tasks-list-text,
 }`;
         const demoHTML = `<!DOCTYPE html>
 <head>
-    <!-- 
-        this meta tag is needed to ensure emojis show up in demo HTML when viewed in safari
-    -->
     <meta charset="utf-8">
 </head>
 <style>
