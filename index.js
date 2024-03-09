@@ -57,6 +57,12 @@ span.tasks-list-text,
     font-family: '${fontName}', var(--font-text);
 }`;
         const demoHTML = `<!DOCTYPE html>
+<head>
+    <!-- 
+        this meta tag is needed to ensure emojis show up in demo HTML when viewed in safari
+    -->
+    <meta charset="utf-8">
+</head>
 <style>
 ${fontFaceCSS}
 tr td:last-child {font-family: '${fontName}', sans-serif; text-align:center}
