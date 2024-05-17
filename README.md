@@ -1,5 +1,7 @@
 # Obsidian Tasks Custom Icons
 
+#### This project was created by Phil Ricketts - [@replete](https://github.com/replete) - and moved to obsidian-tasks-group in May 2024.<br>Many thanks Phil for all the work on this.
+
 This repository contains a commandline tool (for developers/designers) to easily create CSS snippets that when added to Obsidian will replace the emojis used by the [Obsidian Tasks](https://github.com/obsidian-tasks-group/obsidian-tasks) with monochrome icons matching the text colour.
 
 As a Tasks end-user, you can simply [install](https://help.obsidian.md/Extending+Obsidian/CSS+snippets) one of the generated CSS snippets below to your obsidian vault to replace the [Tasks Emoji Format](https://publish.obsidian.md/tasks/Reference/Task+Formats/Tasks+Emoji+Format) emojis (in Live Preview or Reading modes) with monochrome icons.
