@@ -10,7 +10,7 @@ As a Tasks end-user, you can simply [install](https://help.obsidian.md/Extending
 
 ![Lucide-based icon theme screenshot](TasksMonoEmojis-lucide2/screenshot.png)
 
-[Download CSS Snippet](https://github.com/replete/obsidian-tasks-custom-icons/blob/main/TasksMonoEmojis-lucide/TasksMonoEmojis-lucide.css)
+[Download CSS Snippet](https://github.com/obsidian-tasks-group/obsidian-tasks-custom-icons/blob/main/TasksMonoEmojis-lucide/TasksMonoEmojis-lucide.css)
 
 Date and recurring icons modified from https://lucide.dev
 
@@ -18,7 +18,7 @@ Date and recurring icons modified from https://lucide.dev
 
 ![Lucide-based icon theme 2 screenshot](TasksMonoEmojis-lucide2/screenshot.png)
 
-[Download CSS Snippet](https://github.com/replete/obsidian-tasks-custom-icons/blob/main/TasksMonoEmojis-lucide2/TasksMonoEmojis-lucide2.css)
+[Download CSS Snippet](https://github.com/obsidian-tasks-group/obsidian-tasks-custom-icons/blob/main/TasksMonoEmojis-lucide2/TasksMonoEmojis-lucide2.css)
 
 Icons modified from https://lucide.dev
 
@@ -26,16 +26,14 @@ Icons modified from https://lucide.dev
 
 ## EmojiTwo-based Icon set (incomplete)
 
-[Download CSS Snippet](https://github.com/replete/obsidian-tasks-custom-icons/blob/main/TasksMonoEmojis-emojitwo/TasksMonoEmojis-emojitwo.css)
+[Download CSS Snippet](https://github.com/obsidian-tasks-group/obsidian-tasks-custom-icons/blob/main/TasksMonoEmojis-emojitwo/TasksMonoEmojis-emojitwo.css)
 
 Date and recurring icons modified from https://github.com/EmojiTwo/emojitwo/tree/master/svg_bw
 
 
 ## NotoEmoji-based Icon set (incomplete)
 
-![NotoEmoji-based icon them2 screenshot](TasksMonoEmojis-notoemoji/screenshot.png)
-
-[Download CSS Snippet](https://github.com/replete/obsidian-tasks-custom-icons/blob/main/TasksMonoEmojis-notoemoji/TasksMonoEmojis-notoemoji.css)
+[Download CSS Snippet](https://github.com/obsidian-tasks-group/obsidian-tasks-custom-icons/blob/main/TasksMonoEmojis-notoemoji/TasksMonoEmojis-notoemoji.css)
 
 Icons extracted from Google's [Noto Emoji](https://github.com/googlefonts/noto-emoji/blob/main/fonts/NotoColorEmoji.ttf) variable TTF font
 
@@ -67,7 +65,7 @@ License info...
     src: url('data:@file/octet-stream;base64,d09GMgABAAAAAAdkAAsAAAAA_NOTREALDONTUSETHIS...') format('woff2');
     unicode-range: U+1F4C5, U+1F501, U+1F53A, U+1F53C, U+1F53D, U+1F6EB, U+23EB, U+23EC, U+23F3, U+2705, U+2795;
     /* 📅, 🔁, 🔺, 🔼, 🔽, 🛫, ⏫, ⏬, ⏳, ✅, ➕ */
-    /*! Generator: obsidian-tasks-custom-icons v1.0.3 https://github.com/replete/obsidian-tasks-custom-icons */
+    /*! Generator: obsidian-tasks-custom-icons v1.0.4 https://github.com/obsidian-tasks-group/obsidian-tasks-custom-icons */
 }
 
 span.tasks-list-text,
@@ -77,7 +75,3 @@ span.tasks-list-text,
 ```
 
 Please open an issue in github if you discover any issues.
-
-## Support development
-
-<a href="https://www.buymeacoffee.com/replete"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=replete&button_colour=BD5FFF&font_colour=ffffff&font_family=Poppins&outline_colour=000000&coffee_colour=FFDD00" /></a>
