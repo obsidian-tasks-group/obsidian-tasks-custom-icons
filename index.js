@@ -20,7 +20,7 @@ iconFontFolders.forEach(folderName => {
     const [ fontName ] = path.parse(folderName).name.split('-');
     let glyphs = [];
     webfont({
-        files: `${__dirname}/${folderName}/*.svg`,
+        files: `${folderName}/*.svg`,
         fontName: fontName,
         formats: ['woff2'],
         ligatures: false,
