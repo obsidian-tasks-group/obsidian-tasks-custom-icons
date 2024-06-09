@@ -14,13 +14,6 @@ As a Tasks end-user, you can simply [install](https://help.obsidian.md/Extending
 
 Icons modified from https://lucide.dev
 
-## NotoEmoji-based Icon set
-
-![NotoEmoji-based icon them2 screenshot](TasksMonoEmojis-notoemoji/screenshot.png)
-
-[Download CSS Snippet](https://github.com/replete/obsidian-tasks-custom-icons/blob/main/TasksMonoEmojis-notoemoji/TasksMonoEmojis-notoemoji.css)
-
-Icons extracted from Google's [Noto Emoji](https://github.com/googlefonts/noto-emoji/blob/main/fonts/NotoColorEmoji.ttf) variable TTF font
 
 ## Lucide-based Icon set
 
@@ -30,6 +23,7 @@ Icons extracted from Google's [Noto Emoji](https://github.com/googlefonts/noto-e
 
 Date and recurring icons modified from https://lucide.dev
 
+
 ## EmojiTwo-based Icon set
 
 ![EmojiTwo-based icon theme screenshot](TasksMonoEmojis-emojitwo/screenshot.png)
@@ -37,6 +31,20 @@ Date and recurring icons modified from https://lucide.dev
 [Download CSS Snippet](https://github.com/replete/obsidian-tasks-custom-icons/blob/main/TasksMonoEmojis-emojitwo/TasksMonoEmojis-emojitwo.css)
 
 Date and recurring icons modified from https://github.com/EmojiTwo/emojitwo/tree/master/svg_bw
+
+Note: Here for example, Missing some icons 
+
+
+## NotoEmoji-based Icon set
+
+![NotoEmoji-based icon them2 screenshot](TasksMonoEmojis-notoemoji/screenshot.png)
+
+[Download CSS Snippet](https://github.com/replete/obsidian-tasks-custom-icons/blob/main/TasksMonoEmojis-notoemoji/TasksMonoEmojis-notoemoji.css)
+
+Icons extracted from Google's [Noto Emoji](https://github.com/googlefonts/noto-emoji/blob/main/fonts/NotoColorEmoji.ttf) variable TTF font
+
+Note: Here for example, Missing some icons 
+
 
 
 ## Creating a custom icon set
