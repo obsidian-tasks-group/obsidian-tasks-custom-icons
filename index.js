@@ -1,5 +1,5 @@
-const path = require('node:path');
-const fs = require('node:fs');
+const path = require('path');
+const fs = require('fs');
 const webfont = require('webfont').webfont;
 
 const getDirectories = (path) => fs.readdirSync(path).filter(file => fs.statSync(`${path}/${file}`).isDirectory());

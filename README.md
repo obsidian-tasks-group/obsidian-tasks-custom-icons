@@ -6,22 +6,6 @@ This repository contains a commandline tool (for developers/designers) to easily
 
 As a Tasks end-user, you can simply [install](https://help.obsidian.md/Extending+Obsidian/CSS+snippets) one of the generated CSS snippets below to your obsidian vault to replace the [Tasks Emoji Format](https://publish.obsidian.md/tasks/Reference/Task+Formats/Tasks+Emoji+Format) emojis (in Live Preview or Reading modes) with monochrome icons.
 
-## Lucide-based Icon set 2
-
-![Lucide-based icon theme 2 screenshot](TasksMonoEmojis-lucide2/screenshot.png)
-
-[Download CSS Snippet](https://github.com/replete/obsidian-tasks-custom-icons/blob/main/TasksMonoEmojis-lucide2/TasksMonoEmojis-lucide2.css)
-
-Icons modified from https://lucide.dev
-
-## NotoEmoji-based Icon set
-
-![NotoEmoji-based icon them2 screenshot](TasksMonoEmojis-notoemoji/screenshot.png)
-
-[Download CSS Snippet](https://github.com/replete/obsidian-tasks-custom-icons/blob/main/TasksMonoEmojis-notoemoji/TasksMonoEmojis-notoemoji.css)
-
-Icons extracted from Google's [Noto Emoji](https://github.com/googlefonts/noto-emoji/blob/main/fonts/NotoColorEmoji.ttf) variable TTF font
-
 ## Lucide-based Icon set
 
 ![Lucide-based icon theme screenshot](TasksMonoEmojis-lucide2/screenshot.png)
@@ -30,13 +14,30 @@ Icons extracted from Google's [Noto Emoji](https://github.com/googlefonts/noto-e
 
 Date and recurring icons modified from https://lucide.dev
 
-## EmojiTwo-based Icon set
+## Lucide-based Icon set 2
 
-![EmojiTwo-based icon theme screenshot](TasksMonoEmojis-emojitwo/screenshot.png)
+![Lucide-based icon theme 2 screenshot](TasksMonoEmojis-lucide2/screenshot.png)
+
+[Download CSS Snippet](https://github.com/replete/obsidian-tasks-custom-icons/blob/main/TasksMonoEmojis-lucide2/TasksMonoEmojis-lucide2.css)
+
+Icons modified from https://lucide.dev
+
+
+
+## EmojiTwo-based Icon set (incomplete)
 
 [Download CSS Snippet](https://github.com/replete/obsidian-tasks-custom-icons/blob/main/TasksMonoEmojis-emojitwo/TasksMonoEmojis-emojitwo.css)
 
 Date and recurring icons modified from https://github.com/EmojiTwo/emojitwo/tree/master/svg_bw
+
+
+## NotoEmoji-based Icon set (incomplete)
+
+![NotoEmoji-based icon them2 screenshot](TasksMonoEmojis-notoemoji/screenshot.png)
+
+[Download CSS Snippet](https://github.com/replete/obsidian-tasks-custom-icons/blob/main/TasksMonoEmojis-notoemoji/TasksMonoEmojis-notoemoji.css)
+
+Icons extracted from Google's [Noto Emoji](https://github.com/googlefonts/noto-emoji/blob/main/fonts/NotoColorEmoji.ttf) variable TTF font
 
 
 ## Creating a custom icon set
