@@ -8,7 +8,7 @@ As a Tasks end-user, you can simply [install](https://help.obsidian.md/Extending
 
 ## Lucide-based Icon set
 
-![Lucide-based icon theme screenshot](TasksMonoEmojis-lucide2/screenshot.png)
+![Lucide-based icon theme screenshot](TasksMonoEmojis-lucide/screenshot.png)
 
 [Download CSS Snippet](https://github.com/obsidian-tasks-group/obsidian-tasks-custom-icons/blob/main/TasksMonoEmojis-lucide/TasksMonoEmojis-lucide.css)
 
