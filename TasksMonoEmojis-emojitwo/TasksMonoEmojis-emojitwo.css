@@ -16,8 +16,7 @@ span.tasks-list-text,
 span.task-extras,
 .tasks-postpone,
 .tasks-backlink,
-.tasks-edit:after
-{
+.tasks-edit:after {
     font-family: 'TasksMonoEmojis', var(--font-text);
 }
 .tasks-edit:after {
