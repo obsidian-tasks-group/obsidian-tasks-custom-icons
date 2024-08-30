@@ -53,9 +53,25 @@ ${fs.existsSync(`${folderPath}/LICENSE.TXT`) ?
 `;
         const implementationCSS = `${fontFaceCSS}
 span.tasks-list-text,
-.cm-line:has(.task-list-label) [class^=cm-list-] {
+.cm-line:has(.task-list-label) [class^=cm-list-],
+span.task-extras,
+.tasks-postpone,
+.tasks-backlink,
+.tasks-edit:after
+{
     font-family: '${fontName}', var(--font-text);
-}`;
+}
+/* Fix for task.edit icon */
+.tasks-edit:after {
+  content: "󱖉";
+}
+/* Fix for task.extras display */
+span.task-extras {
+  display: inline-flex;
+  align-items: flex-start;
+  margin-left: 0.33em;
+}
+`;
         const demoHTML = `<!DOCTYPE html>
 <style>
 ${fontFaceCSS}
