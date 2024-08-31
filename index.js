@@ -60,9 +60,6 @@ span.task-extras,
 .tasks-edit:after {
     font-family: '${fontName}', var(--font-text);
 }
-.tasks-edit:after {
-  content: "󱖉";
-}
 span.task-extras {
   display: inline-flex;
   align-items: flex-start;
