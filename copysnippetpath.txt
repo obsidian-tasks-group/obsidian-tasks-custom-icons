@@ -1,1 +1,0 @@
-_vault/.obsidian/snippets/

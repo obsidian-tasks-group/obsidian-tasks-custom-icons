@@ -14,6 +14,8 @@ Obsidian Tasks Custom Icons
 https://github.com/obsidian-tasks-group/obsidian-tasks-custom-icons
 */
 
+const testingVaultPath = path.resolve('./_vault/.obsidian/snippets/');
+
 const iconFontFolders = getDirectories(__dirname).filter(dir => !dir.match(/\.git|node_modules|_vault/));
 iconFontFolders.forEach(folderName => {
     const folderPath = `${__dirname}/${folderName}`;
@@ -114,12 +116,22 @@ span.task-extras {
 </body>
 </html>`;
 
-	// Write demo file to disk:
-	fs.writeFileSync(`${folderPath}/${folderName}.html`, demoHTML);
+	console.log(`Created '${folderName}' webfont:`);
 
 	// Write CSS snippet file to disk:
 	fs.writeFileSync(`${folderPath}/${folderName}.css`, implementationCSS);
+	console.log(`...Saved ${folderName}.css to ./${folderName}/`)
 
+	// Write demo file to disk:
+	fs.writeFileSync(`${folderPath}/${folderName}.html`, demoHTML);
+	console.log(`...Saved ${folderName}.html to ./${folderName}/`)
+
+	/*
+		If copysnippetpath.txt exists inside a icon font folder, the directory path inside
+		will have a copy of the obsidian snippet .css file copied to, overwriting it.
+		Optional convenience feature to copy snippets while you are working on an icon set
+		to your home obsidian vault for testing.
+	*/
 	const cspPath = path.resolve(`${folderPath}/copysnippetpath.txt`)
 	if (fs.existsSync(cspPath)) {
 		const cspTargetPath = fs.readFileSync(cspPath).toString().trim();
@@ -127,12 +139,17 @@ span.task-extras {
 		if (fs.existsSync(resolvedCspTargetPath)) {
 			const cspTargetSnippetFilepath = `${resolvedCspTargetPath}/${folderName}.css`;
 			fs.writeFileSync(cspTargetSnippetFilepath, implementationCSS);
-			console.log(`csp: Copied '${folderName}.css' to ${cspTargetSnippetFilepath}`)
+			console.log(`...csp: Copied '${folderName}.css' snippet to ${cspTargetSnippetFilepath}`)
 		} else {
-			console.log(`csp: Target path '${cspTargetPath}' does not exist, ignoring.`)
+			console.log(`...csp: Target path '${cspTargetPath}' does not exist, ignoring.`)
 		}
 	}
+
 	// Write binary font file to disk (unused by generated HTML CSS snipets, purely for theme developers):
 	fs.writeFileSync(`${folderPath}/${folderName}.woff2`, woff2, 'binary');
-	console.log(`Created '${folderName}' webfont`);
+	console.log(`...Saved ${folderName}.woff2 to ./${folderName}/`)
+
+	// Copy CSS snippet to repo testing vault in _vault
+	fs.writeFileSync(`${testingVaultPath}/${folderName}.css`, implementationCSS);
+	console.log(`...Duped ${folderName}.css at ./_vault/.obsidian/snippets/`)
 }

@@ -85,40 +85,26 @@ The unicode reference for the emojis used in the Task Emoji Format is as follows
 This tool generates CSS snippets usable by Obsidian for the purpose of replacing the Task Emojis Format emojis for task lines in obsidian notes. It currently uses the following rules for styling, which only applies the monochrome fonts to task lines in the normal editor, and task dataview. This works for Live Preview and Reading mode, though the rule could easily be adapted to also apply to source mode view.
 
 ```css
-/*! Generator: obsidian-tasks-custom-icons v1.0.6 https://github.com/obsidian-tasks-group/obsidian-tasks-custom-icons */
 /*! License info */
-
-:root {
-	--tasks-mono-font-data: url('data:@file/octet-stream;base64,DO_NOT_USE_CSS_FROM_README') format('woff2');
-	/* 🆔, 🏁, 📅, 📍, 📝, 🔁, 🔗, 🔺, 🔼, 🔽, 🛫, ⏩, ⏫, ⏬, ⏰, ⏳, ⛔, ✅, ❌, ➕ */
-}
-
 @font-face {
-    font-family: 'TasksMonoEmojis';
-    src: var(--tasks-mono-font-data);
-    unicode-range: U+1F194, U+1F3C1, U+1F4C5, U+1F4CD, U+1F4DD, U+1F501, U+1F517, U+1F53A, U+1F53C, U+1F53D, U+1F6EB, U+23E9, U+23EB, U+23EC, U+23F0, U+23F3, U+26D4, U+2705, U+274C, U+2795;
+	font-family: 'TasksMonoEmojis';
+	src: url('data:@file/octet-stream;base64,DO_NOT_USE_THIS_CSS_SAMPLE') format('woff2');
+	unicode-range: u1F194, u1F3C1, u1F4C5, u1F4CD, u1F4DD, u1F501, u1F517, u1F53A, u1F53C, u1F53D, u1F6EB, u23E9, u23EB, u23EC, u23F0, u23F3, u26D4, u2705, u274C, u2795;
+	/* 🆔, 🏁, 📅, 📍, 📝, 🔁, 🔗, 🔺, 🔼, 🔽, 🛫, ⏩, ⏫, ⏬, ⏰, ⏳, ⛔, ✅, ❌, ➕ */
+	/*! Generator: obsidian-tasks-custom-icons v1.0.6 https://github.com/obsidian-tasks-group/obsidian-tasks-custom-icons */
 }
-
-.is-ios {
-	@font-face {
-		font-family: 'TasksMonoEmojis';
-		src: var(--tasks-mono-font-data);
-		unicode-range: u1F194, u1F3C1, u1F4C5, u1F4CD, u1F4DD, u1F501, u1F517, u1F53A, u1F53C, u1F53D, u1F6EB, u23E9, u23EB, u23EC, u23F0, u23F3, u26D4, u2705, u274C, u2795;
-	}
-}
-
 span.tasks-list-text,
 .cm-line:has(.task-list-label) [class^=cm-list-],
 span.task-extras,
 .tasks-postpone,
 .tasks-backlink,
 .tasks-edit:after {
-    font-family: 'TasksMonoEmojis', var(--font-text);
+	font-family: 'TasksMonoEmojis', var(--font-text);
 }
 span.task-extras {
-  display: inline-flex;
-  align-items: flex-start;
-  margin-left: 0.33em;
+	display: inline-flex;
+	align-items: flex-start;
+	margin-left: 0.33em;
 }
 
 ```

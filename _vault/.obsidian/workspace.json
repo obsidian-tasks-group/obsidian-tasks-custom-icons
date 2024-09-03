@@ -4,17 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "e28c5c7ffdd0dc4e",
+        "id": "16c52638d786f0e7",
         "type": "tabs",
         "children": [
           {
-            "id": "c018df9ddedd7dc5",
+            "id": "6a800288711773d3",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "Note.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               }
             }
@@ -22,18 +22,18 @@
         ]
       },
       {
-        "id": "c0ebf5a82933b539",
+        "id": "595381580ff34dfd",
         "type": "tabs",
         "children": [
           {
-            "id": "a527d3a0e0ea450b",
+            "id": "222be02b7b382469",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "Other note.md",
-                "mode": "preview",
-                "source": true
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -165,7 +165,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "a527d3a0e0ea450b",
+  "active": "222be02b7b382469",
   "lastOpenFiles": [
     "Note.md",
     "Other note.md"
