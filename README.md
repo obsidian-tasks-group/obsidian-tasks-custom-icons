@@ -53,6 +53,34 @@ Icons extracted from Google's [Noto Emoji](https://github.com/googlefonts/noto-e
 - Adjust SVG icons as desired
 - Replace `LICENSE.TXT` as appropriate, if you take icons from somewhere rather than creating your own artwork, the license should be honored and reproduced here
 
+### Unicode reference
+
+The unicode reference for the emojis used in the Task Emoji Format is as follows:
+
+| Emoji | Unicode |
+| ----- | ------- |
+| 🆔    | U+1F194 |
+| 🏁    | U+1F3C1 |
+| 📅    | U+1F4C5 |
+| 📍    | U+1F4CD |
+| 🔁    | U+1F501 |
+| 🔗    | U+1F517 |
+| 🔺    | U+1F53A |
+| 🔼    | U+1F53C |
+| 🔽    | U+1F53D |
+| 🛫    | U+1F6EB |
+| ⏩    | U+23E9  |
+| ⏫    | U+23EB  |
+| ⏬    | U+23EC  |
+| ⏰    | U+23F0  |
+| ⏳    | U+23F3  |
+| ⛔    | U+26D4  |
+| ✅    | U+2705  |
+| ❌    | U+274C  |
+| ➕    | U+2795  |
+| 📝    | U+1F4DD |
+
+
 ## CSS Snippet details
 This tool generates CSS snippets usable by Obsidian for the purpose of replacing the Task Emojis Format emojis for task lines in obsidian notes. It currently uses the following rule for styling, which only applies the monochrome fonts to task lines in the normal editor, and task dataview. This works for Live Preview and Reading mode, though the rule could easily be adapted to also apply to source mode view.
 

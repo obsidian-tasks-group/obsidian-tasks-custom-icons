@@ -14,7 +14,7 @@ Obsidian Tasks Custom Icons
 https://github.com/replete
 */
 
-const iconFontFolders = getDirectories(__dirname).filter(dir => !dir.match(/\.git|node_modules/));
+const iconFontFolders = getDirectories(__dirname).filter(dir => !dir.match(/\.git|node_modules|_vault/));
 iconFontFolders.forEach(folderName => {
     const folderPath = `${__dirname}/${folderName}`;
     const [ fontName ] = path.parse(folderName).name.split('-');
@@ -53,9 +53,19 @@ ${fs.existsSync(`${folderPath}/LICENSE.TXT`) ?
 `;
         const implementationCSS = `${fontFaceCSS}
 span.tasks-list-text,
-.cm-line:has(.task-list-label) [class^=cm-list-] {
+.cm-line:has(.task-list-label) [class^=cm-list-],
+span.task-extras,
+.tasks-postpone,
+.tasks-backlink,
+.tasks-edit:after {
     font-family: '${fontName}', var(--font-text);
-}`;
+}
+span.task-extras {
+  display: inline-flex;
+  align-items: flex-start;
+  margin-left: 0.33em;
+}
+`;
         const demoHTML = `<!DOCTYPE html>
 <style>
 ${fontFaceCSS}
@@ -71,18 +81,19 @@ ${glyphs.map(g => `<tr><td>${g.unicode[0]}</td><td>${g.filename}</td><td>U+${g.c
         // Write CSS snippet file to disk:
         fs.writeFileSync(`${folderPath}/${folderName}.css`, implementationCSS);
 
-        const cspPath = `${folderPath}/copysnippetpath.txt`;
+        const cspPath = path.resolve(`${folderPath}/copysnippetpath.txt`)
         if (fs.existsSync(cspPath)) {
-            const cspTargetPath = fs.readFileSync(cspPath).toString();
-            if (fs.existsSync(cspTargetPath)) {
-                const cspTargetSnippetFilepath = `${cspTargetPath}${folderName}.css`;
+            const cspTargetPath = fs.readFileSync(cspPath).toString().trim();
+            const resolvedCspTargetPath = path.resolve(cspTargetPath)
+            if (fs.existsSync(resolvedCspTargetPath)) {
+                const cspTargetSnippetFilepath = `${resolvedCspTargetPath}/${folderName}.css`;
                 fs.writeFileSync(cspTargetSnippetFilepath, implementationCSS);
                 console.log(`csp: Copied '${folderName}.css' to ${cspTargetSnippetFilepath}`)
             } else {
                 console.log(`csp: Target path '${cspTargetPath}' does not exist, ignoring.`)
             }
         }
-        // Write binary font file to disk (unused by generated HTML CSS snipets, purely for theme develoeprs):
+        // Write binary font file to disk (unused by generated HTML CSS snipets, purely for theme developers):
         fs.writeFileSync(`${folderPath}/${folderName}.woff2`, woff2, 'binary');
         console.log(`Created '${folderName}' webfont`);
     })

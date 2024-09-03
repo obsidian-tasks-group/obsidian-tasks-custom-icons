@@ -1,0 +1,11 @@
+
+
+```tasks
+shortmode
+```
+
+---
+
+```tasks
+fullmode
+```
