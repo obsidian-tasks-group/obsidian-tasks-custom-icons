@@ -38,17 +38,30 @@ iconFontFolders.forEach(folderName => {
     })
     .then((result) => {
         const woff2 = Buffer.from(result.woff2);
-        const headerCSS = `/*! 
-${fs.existsSync(`${folderPath}/LICENSE.TXT`) ? 
+        const headerCSS = `/*!
+${fs.existsSync(`${folderPath}/LICENSE.TXT`) ?
     fs.readFileSync(`${folderPath}/LICENSE.TXT`).toString() : ''}
 */`;
-        const fontFaceCSS = `${headerCSS}
+        const fontFaceCSS = `/*! Generator: ${name} v${version} ${url} */
+${headerCSS}
+
+:root {
+	--tasks-mono-font-data: url('data:@file/octet-stream;base64,${woff2.toString('base64')}') format('woff2');
+	/* ${glyphs.map(g => `${g.unicode[0]}`).join(', ')} */
+}
+
 @font-face {
     font-family: '${fontName}';
-    src: url('data:@file/octet-stream;base64,${woff2.toString('base64')}') format('woff2');
+    src: var(--tasks-mono-font-data);
     unicode-range: ${glyphs.map(g => `U+${g.code}`).join(', ')};
-    /* ${glyphs.map(g => `${g.unicode[0]}`).join(', ')} */
-    /*! Generator: ${name} v${version} ${url} */
+}
+
+.is-ios {
+	@font-face {
+		font-family: '${fontName}';
+		src: var(--tasks-mono-font-data);
+		unicode-range: ${glyphs.map(g => `u${g.code}`).join(', ')};
+	}
 }
 `;
         const implementationCSS = `${fontFaceCSS}
