@@ -11,7 +11,7 @@ https://util.unicode.org/UnicodeJsps/list-unicodeset.jsp?a=%5B%3AEmoji%3DYes%3A%
 https://publish.obsidian.md/tasks/Reference/Task+Formats/Tasks+Emoji+Format
 
 Obsidian Tasks Custom Icons
-https://github.com/replete
+https://github.com/obsidian-tasks-group/obsidian-tasks-custom-icons
 */
 
 const iconFontFolders = getDirectories(__dirname).filter(dir => !dir.match(/\.git|node_modules|_vault/));
