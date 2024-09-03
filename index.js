@@ -36,81 +36,103 @@ iconFontFolders.forEach(folderName => {
             return glyphData
         }
     })
-    .then((result) => {
-        const woff2 = Buffer.from(result.woff2);
-        const headerCSS = `/*!
-${fs.existsSync(`${folderPath}/LICENSE.TXT`) ?
-    fs.readFileSync(`${folderPath}/LICENSE.TXT`).toString() : ''}
-*/`;
-        const fontFaceCSS = `/*! Generator: ${name} v${version} ${url} */
-${headerCSS}
+    .then(result => render(result, folderName, folderPath, fontName, glyphs))
+    .catch(error => { throw error });
+});
 
-:root {
-	--tasks-mono-font-data: url('data:@file/octet-stream;base64,${woff2.toString('base64')}') format('woff2');
-	/* ${glyphs.map(g => `${g.unicode[0]}`).join(', ')} */
-}
-
+function render(result, folderName, folderPath, fontName, glyphs) {
+	const woff2 = Buffer.from(result.woff2);
+	const headerCSS = fs.existsSync(`${folderPath}/LICENSE.TXT`) ?
+`/*!
+${fs.readFileSync(`${folderPath}/LICENSE.TXT`).toString()}
+*/` : '';
+	const fontFaceCSS =
+`${headerCSS}
 @font-face {
-    font-family: '${fontName}';
-    src: var(--tasks-mono-font-data);
-    unicode-range: ${glyphs.map(g => `U+${g.code}`).join(', ')};
-}
-
-.is-ios {
-	@font-face {
-		font-family: '${fontName}';
-		src: var(--tasks-mono-font-data);
-		unicode-range: ${glyphs.map(g => `u${g.code}`).join(', ')};
-	}
-}
-`;
-        const implementationCSS = `${fontFaceCSS}
+	font-family: '${fontName}';
+	src: url('data:@file/octet-stream;base64,${woff2.toString('base64')}') format('woff2');
+	unicode-range: ${glyphs.map(g => `u${g.code}`).join(', ')};
+	/* ${glyphs.map(g => `${g.unicode[0]}`).join(', ')} */
+	/*! Generator: ${name} v${version} ${url} */
+}`;
+	const implementationCSS =
+`${fontFaceCSS}
 span.tasks-list-text,
 .cm-line:has(.task-list-label) [class^=cm-list-],
 span.task-extras,
 .tasks-postpone,
 .tasks-backlink,
 .tasks-edit:after {
-    font-family: '${fontName}', var(--font-text);
+	font-family: '${fontName}', var(--font-text);
 }
 span.task-extras {
-  display: inline-flex;
-  align-items: flex-start;
-  margin-left: 0.33em;
+	display: inline-flex;
+	align-items: flex-start;
+	margin-left: 0.33em;
 }
 `;
-        const demoHTML = `<!DOCTYPE html>
-<style>
-${fontFaceCSS}
-tr td:last-child {font-family: '${fontName}', sans-serif; text-align:center}
-td {padding:0 4px;}
-</style>
-<table><tbody>
-${glyphs.map(g => `<tr><td>${g.unicode[0]}</td><td>${g.filename}</td><td>U+${g.code}</td><td>${g.unicode[0]}</td></tr>`).join('')}</tbody></table>`;
+	const demoHTML =
+`<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>${folderName} Demo </title>
+	<style>
+	${fontFaceCSS}
+		html {font-family: sans-serif}
+		table {width:100%; max-width: 600px}
+		tr td:last-child {font-family: '${fontName}', sans-serif; font-size:120%}
+		td, th {padding:6px 4px 4px 4px; border-top: 1px solid #ccc}
+		td img {height:28px; width:28px;}
+		th {text-align:left}
+	</style>
+</head>
+<body>
+	<h1>${folderName}</h1>
+	<small>Iconfont column should display the same icon as SVG column</small><br>
+	<table>
+		<thead>
+			<tr>
+				<th>SVG</th>
+				<th>Filename</th>
+				<th>Codepoint</th>
+				<th>Emoji</th>
+				<th>Iconfont</th>
+			</tr>
+		</thead>
+		<tbody>
+			${glyphs.map(g => `<tr>
+				<td><img src="${g.filename}"/></td>
+				<td>${g.filename}</td>
+				<td>U+${g.code}</td>
+				<td>${g.unicode[0]}</td>
+				<td>${g.unicode[0]}</td>
+			</tr>`).join('')}
+		</tbody>
+	</table>
+</body>
+</html>`;
 
-        // Write demo file to disk:
-        fs.writeFileSync(`${folderPath}/${folderName}.html`, demoHTML);
+	// Write demo file to disk:
+	fs.writeFileSync(`${folderPath}/${folderName}.html`, demoHTML);
 
-        // Write CSS snippet file to disk:
-        fs.writeFileSync(`${folderPath}/${folderName}.css`, implementationCSS);
+	// Write CSS snippet file to disk:
+	fs.writeFileSync(`${folderPath}/${folderName}.css`, implementationCSS);
 
-        const cspPath = path.resolve(`${folderPath}/copysnippetpath.txt`)
-        if (fs.existsSync(cspPath)) {
-            const cspTargetPath = fs.readFileSync(cspPath).toString().trim();
-            const resolvedCspTargetPath = path.resolve(cspTargetPath)
-            if (fs.existsSync(resolvedCspTargetPath)) {
-                const cspTargetSnippetFilepath = `${resolvedCspTargetPath}/${folderName}.css`;
-                fs.writeFileSync(cspTargetSnippetFilepath, implementationCSS);
-                console.log(`csp: Copied '${folderName}.css' to ${cspTargetSnippetFilepath}`)
-            } else {
-                console.log(`csp: Target path '${cspTargetPath}' does not exist, ignoring.`)
-            }
-        }
-        // Write binary font file to disk (unused by generated HTML CSS snipets, purely for theme developers):
-        fs.writeFileSync(`${folderPath}/${folderName}.woff2`, woff2, 'binary');
-        console.log(`Created '${folderName}' webfont`);
-    })
-    .catch((error) => {
-        throw error
-    });
-});
+	const cspPath = path.resolve(`${folderPath}/copysnippetpath.txt`)
+	if (fs.existsSync(cspPath)) {
+		const cspTargetPath = fs.readFileSync(cspPath).toString().trim();
+		const resolvedCspTargetPath = path.resolve(cspTargetPath)
+		if (fs.existsSync(resolvedCspTargetPath)) {
+			const cspTargetSnippetFilepath = `${resolvedCspTargetPath}/${folderName}.css`;
+			fs.writeFileSync(cspTargetSnippetFilepath, implementationCSS);
+			console.log(`csp: Copied '${folderName}.css' to ${cspTargetSnippetFilepath}`)
+		} else {
+			console.log(`csp: Target path '${cspTargetPath}' does not exist, ignoring.`)
+		}
+	}
+	// Write binary font file to disk (unused by generated HTML CSS snipets, purely for theme developers):
+	fs.writeFileSync(`${folderPath}/${folderName}.woff2`, woff2, 'binary');
+	console.log(`Created '${folderName}' webfont`);
+}
