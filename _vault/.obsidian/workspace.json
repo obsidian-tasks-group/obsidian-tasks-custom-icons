@@ -14,8 +14,8 @@
               "type": "markdown",
               "state": {
                 "file": "Note.md",
-                "mode": "source",
-                "source": false
+                "mode": "preview",
+                "source": true
               }
             }
           }
@@ -32,8 +32,8 @@
               "type": "markdown",
               "state": {
                 "file": "Other note.md",
-                "mode": "source",
-                "source": false
+                "mode": "preview",
+                "source": true
               }
             }
           }
@@ -104,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Other note.md",
+                "file": "Note.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +121,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Other note.md",
+                "file": "Note.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -144,7 +144,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Other note.md"
+                "file": "Note.md"
               }
             }
           }
@@ -165,9 +165,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "222be02b7b382469",
+  "active": "6a800288711773d3",
   "lastOpenFiles": [
-    "Note.md",
-    "Other note.md"
+    "Other note.md",
+    "Note.md"
   ]
 }

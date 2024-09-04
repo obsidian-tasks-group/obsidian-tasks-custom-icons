@@ -53,12 +53,24 @@ ${fs.readFileSync(`${folderPath}/LICENSE.TXT`).toString()}
 @font-face {
 	font-family: '${fontName}';
 	src: url('data:@file/octet-stream;base64,${woff2.toString('base64')}') format('woff2');
-	unicode-range: ${glyphs.map(g => `u${g.code}`).join(', ')};
+	unicode-range: ${glyphs.map(g => `U+${g.code}`).join(', ')};
 	/* ${glyphs.map(g => `${g.unicode[0]}`).join(', ')} */
 	/*! Generator: ${name} v${version} ${url} */
-}`;
+}
+/*
+	Note on iOS:
+	Obsidian on iOS uses Safari's webview engine, based on webkit.
+	All other Obsidian versions are using Chromium engine (like Google Chrome).
+	Most browsers support unicode-range with the format 'U+1234, U+1235'.
+	Safari will not show icons on our demo pages unless the format is 'u1234, u1235'.
+	Obsidian on iOS however, prefers the U+1234, U+1235 format.
+	Confirmed on iPhone hardware.
+	For this reason, the demo HTML uses u1234 format, and the actual snippet uses U+1234 format.
+*/
+`;
 	const implementationCSS =
 `${fontFaceCSS}
+
 span.tasks-list-text,
 .cm-line:has(.task-list-label) [class^=cm-list-],
 span.task-extras,
@@ -81,7 +93,14 @@ span.task-extras {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>${folderName} Demo </title>
 	<style>
-	${fontFaceCSS}
+
+	@font-face {
+		font-family: '${fontName}';
+		src: url('data:@file/octet-stream;base64,${woff2.toString('base64')}') format('woff2');
+		unicode-range: ${glyphs.map(g => `u${g.code}`).join(', ')};
+		/* ${glyphs.map(g => `${g.unicode[0]}`).join(', ')} */
+		/*! Generator: ${name} v${version} ${url} */
+	}
 		html {font-family: sans-serif}
 		table {width:100%; max-width: 600px}
 		tr td:last-child {font-family: '${fontName}', sans-serif; font-size:120%}
