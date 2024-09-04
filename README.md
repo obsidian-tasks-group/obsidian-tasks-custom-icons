@@ -88,8 +88,8 @@ This tool generates CSS snippets usable by Obsidian for the purpose of replacing
 /*! License info */
 @font-face {
 	font-family: 'TasksMonoEmojis';
-	src: url('data:@file/octet-stream;base64,DO_NOT_USE_THIS_CSS_SAMPLE') format('woff2');
-	unicode-range: u1F194, u1F3C1, u1F4C5, u1F4CD, u1F4DD, u1F501, u1F517, u1F53A, u1F53C, u1F53D, u1F6EB, u23E9, u23EB, u23EC, u23F0, u23F3, u26D4, u2705, u274C, u2795;
+	src: url('data:@file/octet-stream;base64,DO_NOT_USE_THIS_CSS_EXAMPLE') format('woff2');
+	unicode-range: U+1F194, U+1F3C1, U+1F4C5, U+1F4CD, U+1F4DD, U+1F501, U+1F517, U+1F53A, U+1F53C, U+1F53D, U+1F6EB, U+23E9, U+23EB, U+23EC, U+23F0, U+23F3, U+26D4, U+2705, U+274C, U+2795;
 	/* 🆔, 🏁, 📅, 📍, 📝, 🔁, 🔗, 🔺, 🔼, 🔽, 🛫, ⏩, ⏫, ⏬, ⏰, ⏳, ⛔, ✅, ❌, ➕ */
 	/*! Generator: obsidian-tasks-custom-icons v1.0.6 https://github.com/obsidian-tasks-group/obsidian-tasks-custom-icons */
 }
