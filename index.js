@@ -24,7 +24,7 @@ iconFontFolders.forEach(folderName => {
     webfont({
         files: `${folderName}/*.svg`,
         fontName: fontName,
-        formats: ['woff2'],
+        formats: ['woff2', 'svg'],
         ligatures: false,
         normalize: true,
         verbose: false,
@@ -52,21 +52,12 @@ ${fs.readFileSync(`${folderPath}/LICENSE.TXT`).toString()}
 `${headerCSS}
 @font-face {
 	font-family: '${fontName}';
-	src: url('data:@file/octet-stream;base64,${woff2.toString('base64')}') format('woff2');
+	src:url('data:image/svg+xml;charset=utf-8,${result.svg.replace(/>\s+</g, '><').replace(/\s{2,}/g, ' ').trim()}') format('svg),
+		url('data:@file/octet-stream;base64,${woff2.toString('base64')}') format('woff2');
 	unicode-range: ${glyphs.map(g => `U+${g.code}`).join(', ')};
 	/* ${glyphs.map(g => `${g.unicode[0]}`).join(', ')} */
 	/*! Generator: ${name} v${version} ${url} */
 }
-/*
-	Note on iOS:
-	Obsidian on iOS uses Safari's webview engine, based on webkit.
-	All other Obsidian versions are using Chromium engine (like Google Chrome).
-	Most browsers support unicode-range with the format 'U+1234, U+1235'.
-	Safari will not show icons on our demo pages unless the format is 'u1234, u1235'.
-	Obsidian on iOS however, prefers the U+1234, U+1235 format.
-	Confirmed on iPhone hardware.
-	For this reason, the demo HTML uses u1234 format, and the actual snippet uses U+1234 format.
-*/
 `;
 	const implementationCSS =
 `${fontFaceCSS}
@@ -97,7 +88,7 @@ span.task-extras {
 	@font-face {
 		font-family: '${fontName}';
 		src: url('data:@file/octet-stream;base64,${woff2.toString('base64')}') format('woff2');
-		unicode-range: ${glyphs.map(g => `u${g.code}`).join(', ')};
+		unicode-range: ${glyphs.map(g => `U+${g.code}`).join(', ')};
 		/* ${glyphs.map(g => `${g.unicode[0]}`).join(', ')} */
 		/*! Generator: ${name} v${version} ${url} */
 	}
