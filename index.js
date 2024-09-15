@@ -44,20 +44,42 @@ iconFontFolders.forEach(folderName => {
 
 function render(result, folderName, folderPath, fontName, glyphs) {
 	const woff2 = Buffer.from(result.woff2);
+	const svg = Buffer.from(result.svg); // Safari is fussy
 	const headerCSS = fs.existsSync(`${folderPath}/LICENSE.TXT`) ?
 `/*!
 ${fs.readFileSync(`${folderPath}/LICENSE.TXT`).toString()}
 */` : '';
 	const fontFaceCSS =
 `${headerCSS}
+/*! Generator: ${name} v${version} ${url} */
 @font-face {
 	font-family: '${fontName}';
-	src:url('data:image/svg+xml;charset=utf-8,${result.svg.replace(/>\s+</g, '><').replace(/\s{2,}/g, ' ').trim()}') format('svg),
-		url('data:@file/octet-stream;base64,${woff2.toString('base64')}') format('woff2');
+	src: url('data:@file/octet-stream;base64,${woff2.toString('base64')}') format('woff2');
 	unicode-range: ${glyphs.map(g => `U+${g.code}`).join(', ')};
 	/* ${glyphs.map(g => `${g.unicode[0]}`).join(', ')} */
-	/*! Generator: ${name} v${version} ${url} */
 }
+@supports (-webkit-touch-callout: none) {
+	/* Target Safari iOS */
+	@font-face {
+		font-family: '${fontName}';
+		src: url('data:@file/octet-stream;base64,${svg.toString('base64')}') format('svg');
+		unicode-range: ${glyphs.map(g => `u${g.code}`).join(', ')};
+		/* ${glyphs.map(g => `${g.unicode[0]}`).join(', ')} */
+	}
+}
+@supports not (-webkit-touch-callout: none) {
+	/* Target Safari Desktop */
+	@font-face {
+		font-family: '${fontName}';
+		src: url('data:@file/octet-stream;base64,${svg.toString('base64')}') format('svg');
+		unicode-range: ${glyphs.map(g => `u${g.code}`).join(', ')};
+		/* ${glyphs.map(g => `${g.unicode[0]}`).join(', ')} */
+	}
+}
+/* The above hack is to serve an SVG version of the font to Safari.
+   To learn more about this see issue #3 and PR #15 at github.
+*/
+
 `;
 	const implementationCSS =
 `${fontFaceCSS}
@@ -84,14 +106,9 @@ span.task-extras {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>${folderName} Demo </title>
 	<style>
-
-	@font-face {
-		font-family: '${fontName}';
-		src: url('data:@file/octet-stream;base64,${woff2.toString('base64')}') format('woff2');
-		unicode-range: ${glyphs.map(g => `U+${g.code}`).join(', ')};
-		/* ${glyphs.map(g => `${g.unicode[0]}`).join(', ')} */
-		/*! Generator: ${name} v${version} ${url} */
-	}
+${fontFaceCSS}
+	</style>
+	<style>
 		html {font-family: sans-serif}
 		table {width:100%; max-width: 600px}
 		tr td:last-child {font-family: '${fontName}', sans-serif; font-size:120%}
