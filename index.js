@@ -45,37 +45,54 @@ iconFontFolders.forEach(folderName => {
 function render(result, folderName, folderPath, fontName, glyphs) {
 	const woff2 = Buffer.from(result.woff2);
 	const svg = Buffer.from(result.svg); // Safari is fussy
+	const svgMin = svg.toString().replace(/>\s+</g, '><').replace(/\s{2,}/g, ' ').trim()
+
+	const orderedCodepoints = glyphs.map(g => g.code).sort((a, b) => parseInt(a, 16) - parseInt(b, 16));
+	const paddedCodepoints = orderedCodepoints.map(c => c.padStart(5, '0'));
+	console.log(paddedCodepoints);
+	const incrementHex = hex => (parseInt(hex, 16) + 1).toString(16).toUpperCase().padStart(hex.length, '0');
+
+	const randomPick = arr => arr[Math.floor(Math.random() * arr.length)];
+
 	const headerCSS = fs.existsSync(`${folderPath}/LICENSE.TXT`) ?
 `/*!
 ${fs.readFileSync(`${folderPath}/LICENSE.TXT`).toString()}
 */` : '';
 	const fontFaceCSS =
-`${headerCSS}
+`@charset "UTF-8";
+${headerCSS}
 /*! Generator: ${name} v${version} ${url} */
 @font-face {
-	font-family: '${fontName}';
+	font-family: '${fontName}x';
 	src: url('data:@file/octet-stream;base64,${woff2.toString('base64')}') format('woff2');
 	unicode-range: ${glyphs.map(g => `U+${g.code}`).join(', ')};
 	/* ${glyphs.map(g => `${g.unicode[0]}`).join(', ')} */
 }
+/* src: url('data:@file/octet-stream;base64,\${svg.toString('base64')}') format('svg'); */
 @supports (-webkit-touch-callout: none) {
 	/* Target Safari iOS */
+
 	@font-face {
 		font-family: '${fontName}';
-		src: url('data:@file/octet-stream;base64,${svg.toString('base64')}') format('svg');
-		unicode-range: ${glyphs.map(g => `U+${g.code}`).join(', ')};
-		/* ${glyphs.map(g => `${g.unicode[0]}`).join(', ')} */
-	}
-}
-@supports not (-webkit-touch-callout: none) {
-	/* Target Safari Desktop */
+		src:url('data:image/svg+xml;charset=utf-8,${encodeURIComponent(svgMin)}') format('svg');
+		unicode-range: U+02000-1F9FF;
+		}
+
+
 	@font-face {
-		font-family: '${fontName}';
-		src: url('data:@file/octet-stream;base64,${svg.toString('base64')}') format('svg');
-		unicode-range: ${glyphs.map(g => `U+${g.code}`).join(', ')};
+		font-family: '${fontName}XXXXX';
+		src: url('data:@file/octet-stream;base64,${woff2.toString('base64')}') format('woff2');
+		unicode-range: ${paddedCodepoints.map(u => `u+${u}-${incrementHex(u)}`).join(', ')}, U+023F3;
 		/* ${glyphs.map(g => `${g.unicode[0]}`).join(', ')} */
 	}
+
+	@font-face {
+		font-family: '${fontName}WORKS BUT ONLY ONE';
+		src:url('data:image/svg+xml;charset=utf-8,${encodeURIComponent(svgMin)}') format('svg');
+		unicode-range: U+02???;
+	}
 }
+		/* ${glyphs.map(g => `${g.unicode[0]}`).join(', ')} */
 /* The above hack is to serve an SVG version of the font to Safari.
    To learn more about this see issue #3 and PR #15 at github.
 */
@@ -91,6 +108,7 @@ span.task-extras,
 .tasks-backlink,
 .tasks-edit:after {
 	font-family: '${fontName}', var(--font-text);
+	outline:1px solid ${randomPick(['red', 'green', 'blue', 'yellow', 'orange', 'purple','white','grey','pink','teal'])};
 }
 span.task-extras {
 	display: inline-flex;
