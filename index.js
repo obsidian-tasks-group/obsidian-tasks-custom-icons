@@ -68,13 +68,11 @@ ${headerCSS}
 	@font-face {
 		font-family: '${fontName}';
 		src: url('data:@file/octet-stream;base64,${woff2.toString('base64')}') format('woff2');
-		unicode-range: U+02000-1F9FF;
 		/*
-			Safari does not lists of individual codepoints, so we have to use a wide range,
-			unfortunately breaking use of other user emojis in task items. For more info see PR #15.
-
-			Note: Safari also prefers shorter ranges to be padded with a 0.
+			The following is a specific fix for Obsidian iOS.
+			For reasons unknown, a single hardcoded wide range is required to make all of the icons replace correctly.
 		*/
+		unicode-range: U+02000-1F9FF;
 	}
 }
 
