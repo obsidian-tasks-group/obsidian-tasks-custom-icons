@@ -10,32 +10,25 @@ As a Tasks end-user, you can simply [install](https://help.obsidian.md/Extending
 
 ![Lucide-based icon theme screenshot](TasksMonoEmojis-lucide/screenshot.png)
 
-[Download CSS Snippet](https://github.com/obsidian-tasks-group/obsidian-tasks-custom-icons/blob/main/TasksMonoEmojis-lucide/TasksMonoEmojis-lucide.css)
-
-Date and recurring icons modified from https://lucide.dev
+**[Download Lucide CSS Snippet](https://github.com/obsidian-tasks-group/obsidian-tasks-custom-icons/blob/main/TasksMonoEmojis-lucide/TasksMonoEmojis-lucide.css)** (Icons modified from https://lucide.dev)
 
 ## Lucide-based Icon set 2
 
 ![Lucide-based icon theme 2 screenshot](TasksMonoEmojis-lucide2/screenshot.png)
 
-[Download CSS Snippet](https://github.com/obsidian-tasks-group/obsidian-tasks-custom-icons/blob/main/TasksMonoEmojis-lucide2/TasksMonoEmojis-lucide2.css)
-
-Icons modified from https://lucide.dev
 
 
-
-## EmojiTwo-based Icon set (incomplete)
-
-[Download CSS Snippet](https://github.com/obsidian-tasks-group/obsidian-tasks-custom-icons/blob/main/TasksMonoEmojis-emojitwo/TasksMonoEmojis-emojitwo.css)
-
-Date and recurring icons modified from https://github.com/EmojiTwo/emojitwo/tree/master/svg_bw
+**[Download Lucide2 CSS Snippet](https://github.com/obsidian-tasks-group/obsidian-tasks-custom-icons/blob/main/TasksMonoEmojis-lucide2/TasksMonoEmojis-lucide2.css)** (Icons modified from https://lucide.dev)
 
 
-## NotoEmoji-based Icon set (incomplete)
+## Incomplete icon sets
 
-[Download CSS Snippet](https://github.com/obsidian-tasks-group/obsidian-tasks-custom-icons/blob/main/TasksMonoEmojis-notoemoji/TasksMonoEmojis-notoemoji.css)
+These icon sets are incomplete and are not recommended for use. They are included here for reference.
+- EmojiTwo-based Icon set
+	- Date and recurring icons modified from https://github.com/EmojiTwo/emojitwo/tree/master/svg_bw
+- NotoEmoji-based Icon set
+	- Icons extracted from Google's [Noto Emoji](https://github.com/googlefonts/noto-emoji/blob/main/fonts/NotoColorEmoji.ttf) variable TTF font
 
-Icons extracted from Google's [Noto Emoji](https://github.com/googlefonts/noto-emoji/blob/main/fonts/NotoColorEmoji.ttf) variable TTF font
 
 
 ## Creating a custom icon set
@@ -98,7 +91,7 @@ span.tasks-list-text,
 span.task-extras,
 .tasks-postpone,
 .tasks-backlink,
-.tasks-edit:after {
+.tasks-edit::after {
 	font-family: 'TasksMonoEmojis', var(--font-text);
 }
 span.task-extras {

@@ -24,7 +24,7 @@ iconFontFolders.forEach(folderName => {
     webfont({
         files: `${folderName}/*.svg`,
         fontName: fontName,
-        formats: ['woff2', 'svg'],
+        formats: ['woff2'],
         ligatures: false,
         normalize: true,
         verbose: false,
@@ -44,15 +44,10 @@ iconFontFolders.forEach(folderName => {
 
 function render(result, folderName, folderPath, fontName, glyphs) {
 	const woff2 = Buffer.from(result.woff2);
-	const svg = Buffer.from(result.svg); // Safari is fussy
-	const svgMin = svg.toString().replace(/>\s+</g, '><').replace(/\s{2,}/g, ' ').trim()
-
-	const orderedCodepoints = glyphs.map(g => g.code).sort((a, b) => parseInt(a, 16) - parseInt(b, 16));
-	const paddedCodepoints = orderedCodepoints.map(c => c.padStart(5, '0'));
-	console.log(paddedCodepoints);
-	const incrementHex = hex => (parseInt(hex, 16) + 1).toString(16).toUpperCase().padStart(hex.length, '0');
-
-	const randomPick = arr => arr[Math.floor(Math.random() * arr.length)];
+	const sortedCodepoints = glyphs.map(g => g.code).sort((a, b) => parseInt(a, 16) - parseInt(b, 16));
+	const codepointComment = `/* ${sortedCodepoints.map(cp => `U+${cp}:` + String.fromCodePoint(parseInt(cp, 16))).join(', ')} */`;
+	// const paddedCodepoints = sortedCodepoints.map(c => c.padStart(5, '0'));
+	// const incrementHex = hex => (parseInt(hex, 16) + 1).toString(16).toUpperCase().padStart(hex.length, '0');
 
 	const headerCSS = fs.existsSync(`${folderPath}/LICENSE.TXT`) ?
 `/*!
@@ -63,39 +58,25 @@ ${fs.readFileSync(`${folderPath}/LICENSE.TXT`).toString()}
 ${headerCSS}
 /*! Generator: ${name} v${version} ${url} */
 @font-face {
-	font-family: '${fontName}x';
+	font-family: '${fontName}';
 	src: url('data:@file/octet-stream;base64,${woff2.toString('base64')}') format('woff2');
-	unicode-range: ${glyphs.map(g => `U+${g.code}`).join(', ')};
-	/* ${glyphs.map(g => `${g.unicode[0]}`).join(', ')} */
+	unicode-range: ${sortedCodepoints.map(u => `U+${u}`).join(', ')};
+	${codepointComment}
 }
-/* src: url('data:@file/octet-stream;base64,\${svg.toString('base64')}') format('svg'); */
 @supports (-webkit-touch-callout: none) {
 	/* Target Safari iOS */
-
 	@font-face {
 		font-family: '${fontName}';
-		src:url('data:image/svg+xml;charset=utf-8,${encodeURIComponent(svgMin)}') format('svg');
-		unicode-range: U+02000-1F9FF;
-		}
-
-
-	@font-face {
-		font-family: '${fontName}XXXXX';
 		src: url('data:@file/octet-stream;base64,${woff2.toString('base64')}') format('woff2');
-		unicode-range: ${paddedCodepoints.map(u => `u+${u}-${incrementHex(u)}`).join(', ')}, U+023F3;
-		/* ${glyphs.map(g => `${g.unicode[0]}`).join(', ')} */
-	}
+		unicode-range: U+02000-1F9FF;
+		/*
+			Safari does not lists of individual codepoints, so we have to use a wide range,
+			unfortunately breaking use of other user emojis in task items. For more info see PR #15.
 
-	@font-face {
-		font-family: '${fontName}WORKS BUT ONLY ONE';
-		src:url('data:image/svg+xml;charset=utf-8,${encodeURIComponent(svgMin)}') format('svg');
-		unicode-range: U+02???;
+			Note: Safari also prefers shorter ranges to be padded with a 0.
+		*/
 	}
 }
-		/* ${glyphs.map(g => `${g.unicode[0]}`).join(', ')} */
-/* The above hack is to serve an SVG version of the font to Safari.
-   To learn more about this see issue #3 and PR #15 at github.
-*/
 
 `;
 	const implementationCSS =
@@ -106,9 +87,8 @@ span.tasks-list-text,
 span.task-extras,
 .tasks-postpone,
 .tasks-backlink,
-.tasks-edit:after {
+.tasks-edit::after {
 	font-family: '${fontName}', var(--font-text);
-	outline:1px solid ${randomPick(['red', 'green', 'blue', 'yellow', 'orange', 'purple','white','grey','pink','teal'])};
 }
 span.task-extras {
 	display: inline-flex;
@@ -127,26 +107,26 @@ span.task-extras {
 		@font-face {
 			font-family: '${fontName}';
 			src: url('data:@file/octet-stream;base64,${woff2.toString('base64')}') format('woff2');
-			unicode-range: ${glyphs.map(g => `U+${g.code}`).join(', ')};
-			/* ${glyphs.map(g => `${g.unicode[0]}`).join(', ')} */
+			unicode-range: ${sortedCodepoints.map(u => `U+${u}`).join(', ')};
+			${codepointComment}
 		}
 		/* Just for the demo version we are using the u1234 format for Safari */
 		@supports (-webkit-touch-callout: none) {
 			/* Target Safari iOS */
 			@font-face {
 				font-family: '${fontName}';
-				src: url('data:@file/octet-stream;base64,${svg.toString('base64')}') format('svg');
-				unicode-range: ${glyphs.map(g => `u${g.code}`).join(', ')};
-				/* ${glyphs.map(g => `${g.unicode[0]}`).join(', ')} */
+				src: url('data:@file/octet-stream;base64,${woff2.toString('base64')}') format('woff2');
+				unicode-range: ${sortedCodepoints.map(u => `u${u}`).join(', ')};
+				${codepointComment}
 			}
 		}
 		@supports not (-webkit-touch-callout: none) {
 			/* Target Safari Desktop */
 			@font-face {
 				font-family: '${fontName}';
-				src: url('data:@file/octet-stream;base64,${svg.toString('base64')}') format('svg');
-				unicode-range: ${glyphs.map(g => `u${g.code}`).join(', ')};
-				/* ${glyphs.map(g => `${g.unicode[0]}`).join(', ')} */
+				src: url('data:@file/octet-stream;base64,${woff2.toString('base64')}') format('woff2');
+				unicode-range: ${sortedCodepoints.map(u => `u${u}`).join(', ')};
+				${codepointComment}
 			}
 		}
 
