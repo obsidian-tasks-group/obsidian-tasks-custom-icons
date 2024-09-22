@@ -85,7 +85,10 @@ span.tasks-list-text,
 span.task-extras,
 .tasks-postpone,
 .tasks-backlink,
-.tasks-edit::after {
+.tasks-edit::after,
+.cm-line:has(.task-list-label) .suggestion,
+.tasks-modal-priority-section,
+.tasks-modal-parsed-date {
 	font-family: '${fontName}', var(--font-text);
 }
 span.task-extras {
