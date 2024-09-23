@@ -86,9 +86,9 @@ span.task-extras,
 .tasks-postpone,
 .tasks-backlink,
 .tasks-edit::after,
-.cm-line:has(.task-list-label) .suggestion,
 .tasks-modal-priority-section,
-.tasks-modal-parsed-date {
+.tasks-modal-parsed-date,
+.suggestion-container .suggestion {
 	font-family: '${fontName}', var(--font-text);
 }
 span.task-extras {

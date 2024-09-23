@@ -14,8 +14,8 @@
               "type": "markdown",
               "state": {
                 "file": "Note.md",
-                "mode": "preview",
-                "source": true
+                "mode": "source",
+                "source": false
               }
             }
           }
