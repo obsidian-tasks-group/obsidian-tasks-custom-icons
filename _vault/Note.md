@@ -1,25 +1,25 @@
-## Emoji
+## Tasks with TaskEmojis
 
-- [ ] task full emoji 📅 2024-08-30 🛫 2024-08-30 ⏳ 2024-08-30 ⏫ 🔁 every day ➕ 2024-08-30 🆔 ikp3n1 ⛔ 🏁 delete  [id:: iwgbhh]
+- [ ] Task with all TaskEmojis included 📅 2024-08-30 🛫 2024-08-30 ⏳ 2024-08-30 ⏫ 🔁 every day ➕ 2024-08-30 🆔 ikp3n1 ⛔ 🏁 delete  [id:: iwgbhh]
 
-## Dataview
+## Tasks with Dataview fields
 
-- [ ] task2 full dataview[due:: 2024-08-30]  [start:: 2024-08-30]   [scheduled:: 2024-08-30]   [priority:: medium]  [repeat:: every day]    [created:: 2024-08-30]   [id:: vlvubo]  [dependsOn:: iwgbhh]  [onCompletion:: keep] 
-
----
-- [ ] task highest [priority:: highest] 
-- [ ] task high [priority:: high] 
-- [ ] task medium [priority:: medium] 
-- [ ] task low [priority:: low] 
-- [ ] task lowest [priority:: lowest] 
+- [ ] Task with all dataview fields [due:: 2024-08-30]  [start:: 2024-08-30]   [scheduled:: 2024-08-30]   [priority:: medium]  [repeat:: every day]    [created:: 2024-08-30]   [id:: vlvubo]  [dependsOn:: iwgbhh]  [onCompletion:: keep] 
 
 ---
+- [ ] Highest priority task [priority:: highest] 
+- [ ] High priority task [priority:: high] 
+- [ ] Medium priority task [priority:: medium] 
+- [ ] Low priority task [priority:: low] 
+- [ ] Lowest priority task [priority:: lowest] 
 
-- [ ] task due [due:: 2024-08-30] 
-- [ ] task start [start:: 2024-08-30] 
-- [ ] task scheduled [scheduled:: 2024-08-30] 
-- [ ] task repeat [repeat:: every week] 
-- [ ] task created [created:: 2024-08-30] 
-- [ ] task id [id:: 23]
-- [ ] task dependsOn [dependsOn:: 23]
-- [ ] task onCompletion [onCompletion:: keep] 
+---
+
+- [ ] Task with only due date [due:: 2024-08-30] 
+- [ ] Task with only start date [start:: 2024-08-30] 
+- [ ] Task with only scheduled date [scheduled:: 2024-08-30] 
+- [ ] Repeating task [repeat:: every week] 
+- [ ] Task with only created date [created:: 2024-08-30] 
+- [ ] Task with only id [id:: 23]
+- [ ] Task with only dependsOn [dependsOn:: 23]
+- [ ] Task with only onCompletion [onCompletion:: keep] 
